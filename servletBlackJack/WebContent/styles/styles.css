@@ -1,0 +1,164 @@
+﻿body {
+    font-family: "Arial Black", Gadget, sans-serif;
+    margin:0;
+    font-size: 22px;
+	background-image:url(background.jpg);
+	background-size:cover;
+	color:white;
+}       
+
+    div{
+      
+    }
+
+
+div#bid p{
+    font-size:30px;
+    text-align:right;
+    padding-left:200px;
+}
+
+img.card {
+    width:120px;
+}
+
+input {
+    width:180px;
+    height:25px;
+    font-size:16px;
+}
+
+
+
+#center {
+       margin:0 auto;    
+       width:50%;
+       float:left;
+       text-align:center;
+}
+#side {
+   width:25%;
+   float:left;
+}
+
+#right {
+    width:50%;
+    text-align:right;
+    float:left;
+    margin:auto;
+    padding-top:50px;
+    padding-bottom:65px;
+}
+#left {
+    width:50%;
+    text-align:left;
+    float:right;
+    padding-top:25px;
+}
+
+.button {
+  border-top: 1px solid #96d1f8;
+   background: #522932;
+   background: -webkit-gradient(linear, left top, left bottom, from(#f20928), to(#522932));
+   background: -webkit-linear-gradient(top, #f20928, #522932);
+   background: -moz-linear-gradient(top, #f20928, #522932);
+   background: -ms-linear-gradient(top, #f20928, #522932);
+   background: -o-linear-gradient(top, #f20928, #522932);
+   padding: 9.5px 19px;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   border-radius: 15px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #fcfcfc;
+   font-size: 30px;
+   font-family: Georgia, Serif;
+   text-decoration: none;
+   vertical-align: middle;
+     width:200px;
+   height:60px;
+   }
+.sbutton {
+   border-top: 1px solid #96d1f8;
+   background: #527a2c;
+   background: -webkit-gradient(linear, left top, left bottom, from(#6ef50e), to(#527a2c));
+   background: -webkit-linear-gradient(top, #6ef50e, #527a2c);
+   background: -moz-linear-gradient(top, #6ef50e, #527a2c);
+   background: -ms-linear-gradient(top, #6ef50e, #527a2c);
+   background: -o-linear-gradient(top, #6ef50e, #527a2c);
+   padding: 9.5px 19px;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   border-radius: 15px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #fcfcfc;
+   font-size: 30px;
+   font-family: Georgia, Serif;
+   text-decoration: none;
+   vertical-align: middle;
+        width:200px;
+   height:60px;
+
+   }
+#start{
+    padding-top:200px;
+}
+#finish {
+    padding-top:60px;
+}
+
+#gameResult {
+    font-size:35px;
+}
+        
+.clearButton {
+   border-top: 1px solid #96d1f8;
+   background: #6f787d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#edf0f2), to(#6f787d));
+   background: -webkit-linear-gradient(top, #edf0f2, #6f787d);
+   background: -moz-linear-gradient(top, #edf0f2, #6f787d);
+   background: -o-linear-gradient(top, #edf0f2, #6f787d);
+   padding: 6px 12px;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 12px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   height:25px;
+   }
+button:focus {
+    outline: none;
+}
+
+.sendbutton {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 6px 12px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 16px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
