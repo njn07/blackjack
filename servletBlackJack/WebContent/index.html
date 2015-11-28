@@ -4,7 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <meta charset="utf-8" />
-
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
 	<script src="_js/lib/jquery-2.1.1.js"></script>
@@ -18,16 +17,16 @@
 	<script src="sweetalert-master/dist/sweetalert.min.js"></script>
 	<link rel = "stylesheet" type = "text/css" href = "sweetalert-master/dist/sweetalert.css">
     <script src="_js/slider.js"></script>
+    <meta name="viewport" content="target-densitydpi=device-dpi" />
         
 </head>
 <body>
 
-    <div >
+    
 
-        <div id="side" style="padding-left:20px; padding-top:20px; text-align:center">
+        <div id="side">
             <img src="img/cards/background.png" class="card"  /> 
-            <p style="padding-top:270px">Log in <br /> <input type="text" /></p>
-            <p>Password <br /> <input type="password" /></p>
+            
             
         </div>
 
@@ -67,8 +66,8 @@
                     <div id="playerSum" style="padding-right:30px"></div> <!--тут будут очки игрока-->
                 </div>
                 <div id="left" style="padding-top:30px;padding-bottom:181px;position:relative">
-                    <img src="img/cards/background.png" id="playerCard0" class="card" style="position:absolute;"hidden="hidden"" /><!--15-->
-                    <img src="img/cards/background.png" id="playerCard1" class="card" style="position:absolute; left: 25px;"hidden="hidden"" />    <!--1-->
+                    <img src="img/cards/background.png" id="playerCard0" class="card" style="position:absolute;"hidden="hidden" /><!--15-->
+                    <img src="img/cards/background.png" id="playerCard1" class="card" style="position:absolute; left: 25px;"hidden="hidden" />    <!--1-->
                     <img src="img/cards/background.png" id="playerCard2" class="card" style="position:absolute; left: 50px;"hidden="hidden" /><!--2-->
                     <img src="img/cards/background.png" id="playerCard3" class="card" style="position:absolute; left: 75px; "hidden="hidden"/><!--3-->
                     <img src="img/cards/background.png" id="playerCard4" class="card" style="position:absolute; left: 100px; "hidden="hidden"/><!--4-->
@@ -89,10 +88,9 @@
             </div>
 			<div id="panel" hidden="true">
             
-            <div>
-                <button  class="button" id="hit">HIT</button>
+                <button  class="button" id="hit" >HIT</button>
                 <button  class="button" id="stand">STAND</button>
-            </div>
+
 			</div>
 			<div id="betbar" hidden="true">
             <p>
@@ -106,20 +104,23 @@
             </div>
 			</div>
     </div>      
-        <div id="side" style=" padding-top:20px">
-            <p id="bid" style ="text-align:center;">Bid: <br /></p> <!--ставка-->
-            <div style="padding-top:150px;text-align:center;">
-                <img src="img/chips/five.png" style="width:82px"/>
-                <div style="padding-top:51px"  hidden="hidden">&nbsp;</div>
+    
+        <div id="side" style="padding-top:20px;text-align:center;">
+        <p style="padding-top:20px;">Username <br /> <input type="text" /></p>
+            <p>Password <br /> <input type="password" /></p>
+            <button class="logButton">LOG IN</button>
+            <div style="padding-top:120px;">
+            <p id="bid">Bid: <br />&nbsp;</p> <!--ставка-->
+                
             </div>
-            <div style="text-align:center"><button class="clearButton">CLEAR</button></div>
-            <div style="padding-top:150px;text-align:center">
+           
+            <div style="padding-top:120px;">
                 <p id="balance">Balance: <br /></p>
             </div>
+             <button class="refillButton">REFILL</button>
         </div>
         
         
-    </div>
 
 </body>
 </html>

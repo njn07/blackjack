@@ -1,3 +1,4 @@
+
 var hitParams = {
 	action : "HIT",
 	userId : "casualPlayer"
@@ -22,5 +23,10 @@ var balanceParams = {
 	action : "GETBALANCE",
 	userId : "casualPlayer"
 };
-var restAdress =  "http://black-jakk.rhcloud.com/servletBlackJack/rest";
-// const restAdress = "http://localhost:8080/bjservice/rest";
+var refillParams = {
+	action : "REFILL",
+	userId : "casualPlayer"
+}
+var restAdress="http://black-jakk.rhcloud.com/rest";
+//var restAdress="http://localhost:8080/servletBlackJack/rest";
+	//window.location+'rest';

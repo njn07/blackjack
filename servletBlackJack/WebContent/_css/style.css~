@@ -1,0 +1,42 @@
+html{
+}
+.mask{
+	width: 30px;
+	height: 25px;
+	padding: 0;
+	border: none;
+	margin-left: -30px;
+	position: absolute;
+	top: 9px;
+	right: 907px;
+	outline: none;
+}
+
+#eye{
+	background:url(../img/pass_eye.png);
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#uneye{
+	visibility: hidden;
+	background:url(../img/pass_uneye.png);
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.input{
+	width: 150px;
+	height: 20px;
+}
+
+input[type="password"]{
+	padding-right: 30px;
+	background-color: yellow;
+}
+input[type="email"]{
+	background-color: pink;
+	border: none;
+}

@@ -20,7 +20,7 @@ document.getElementById('bid').innerHTML = income;
 function setSlider(maxValue){
       $( "#slider" ).slider({
           range: "min",
-          value: 0,
+          value: 1,
           min: 1,
           max: maxValue,
           slide: function( event, ui ) {
@@ -28,6 +28,33 @@ function setSlider(maxValue){
           }
       });
       $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+      $("#amount").keyup(function(event) {
+    	  var data = $("#amount").val();
+	    if (data.length > 0)
+	    {
+	       if (parseInt(data) >= 0 && parseInt(data) <= maxValue)
+	       {
+	           $("#slider").slider("option", "value", data);}
+	       
+	       else
+	       {
+	   if (parseInt(data) < 1)
+	          {
+	     $("#amount").val("1");
+	            $("#slider").slider("option", "value", "1");
+	          }
+	          if (parseInt(data) > maxValue)
+	          {
+	            $("#amount").val(maxValue);
+	            $("#slider").slider("option", "value", maxValue);
+	          }
+	       }
+	    }
+	    else
+	    {
+	      $("#slider").slider("option", "value", "0");
+	    } 
+      });
 }
 function showGameResult(data){
 var status = data["gameStatus"];
@@ -54,7 +81,7 @@ var status = data["gameStatus"];
 	}
 function setCardImage(cardOwner, cardName, index) {
 	$("#" + cardOwner + index).show('slow');
-	document.getElementById(cardOwner + index).src = "img/cards_png/" + cardName + ".png";
+	document.getElementById(cardOwner + index).src = "img/cards/" + cardName + ".png";
 }
 function setPlayerScore(score){
 if(score!=-1)

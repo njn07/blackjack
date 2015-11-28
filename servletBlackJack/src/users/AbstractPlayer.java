@@ -9,21 +9,22 @@ import deckpac.*;
  * (for human and robot)
  * 
  * @author max
- *
+ * 
  */
 
 public abstract class AbstractPlayer extends RegisteredUser {
 
+	private static final int DEFAULT_STARTSUM = 1000;
 	List<Card> playerCards = new ArrayList<Card>();
 
 	public List<Card> getPlayerCards() {
 		return playerCards;
 	}
 
-	int chipCount = chipsAmount / 50;// the amount of player's chips at the
-									// table. Equals 1/5 until we don't have
-									// table limitations
-	
+	int chipCount = DEFAULT_STARTSUM;// the amount of player's chips at the
+										// table. Equals 1/5 until we don't have
+										// table limitations
+
 	/**
 	 * Take the card
 	 */
@@ -39,8 +40,9 @@ public abstract class AbstractPlayer extends RegisteredUser {
 		this.chipCount = chipCount;
 
 	}
-	public void refill(){
-			this.chipCount=1000;
+
+	public void refill() {
+		this.chipCount += 1000;
 	}
 
 	/**
@@ -72,8 +74,8 @@ public abstract class AbstractPlayer extends RegisteredUser {
 		}
 		return false;
 	}
-	
-	public void update(){
+
+	public void update() {
 		playerCards.clear();
 	}
 

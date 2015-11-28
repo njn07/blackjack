@@ -17,11 +17,13 @@ body.stop-scrolling {
   z-index: 10000; }
 
 .sweet-alert {
-  background-color: white;
+  background-color: #008614;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 478px;
   padding: 17px;
   border-radius: 5px;
+  border-style: groove;
+  border-color: black;
   text-align: center;
   position: fixed;
   left: 50%;
@@ -39,7 +41,7 @@ body.stop-scrolling {
       left: 15px;
       right: 15px; } }
   .sweet-alert h2 {
-    color: #575757;
+    color: orange;
     font-size: 30px;
     text-align: center;
     font-weight: 600;
@@ -50,7 +52,7 @@ body.stop-scrolling {
     line-height: 40px;
     display: block; }
   .sweet-alert p {
-    color: #797979;
+    color: #c1f101;
     font-size: 16px;
     text-align: center;
     font-weight: 300;
@@ -170,17 +172,27 @@ body.stop-scrolling {
     opacity: 0;
     visibility: hidden; }
   .sweet-alert button {
-    background-color: #fff4F5;
-    color: white;
-    border: none;
-    box-shadow: none;
-    font-size: 17px;
-    font-weight: 500;
-    -webkit-border-radius: 4px;
-    border-radius: 5px;
-    padding: 10px 32px;
-    margin: 26px 5px 0 5px;
-    cursor: pointer; }
+  margin-top: 20px;
+    border-top: 1px solid #96d1f8;
+   background: #6f787d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#edf0f2), to(#6f787d));
+   background: -webkit-linear-gradient(top, #edf0f2, #6f787d);
+   background: -moz-linear-gradient(top, #edf0f2, #6f787d);
+   background: -o-linear-gradient(top, #edf0f2, #6f787d);
+   padding: 6px 12px;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 20px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   height:40px; }
     .sweet-alert button:focus {
       outline: none;
       box-shadow: 0 0 2px rgba(128, 179, 235, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.05); }

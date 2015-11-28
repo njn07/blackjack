@@ -6,7 +6,7 @@ import deckpac.Deck;
  * This class implements human BlackJack game
  * 
  * @author max
- *
+ * 
  */
 public class HumanPlayer extends AbstractPlayer {
 
@@ -17,7 +17,7 @@ public class HumanPlayer extends AbstractPlayer {
 	}
 
 	public void setPot(int pot) {
-		if(pot<=0||pot>chipCount)
+		if (pot <= 0 || pot > chipCount)
 			throw new IllegalArgumentException();
 		this.pot = pot;
 	}
@@ -30,13 +30,7 @@ public class HumanPlayer extends AbstractPlayer {
 	 *            money on player's account
 	 */
 	public void TakeMoneyToTable(int amount) {
-		try {
-			if (amount <= chipsAmount) {
-				chipCount = amount;
-			}
-		} catch (IllegalArgumentException e) {
-
-		}
+		
 	}
 
 	@Override
@@ -44,4 +38,7 @@ public class HumanPlayer extends AbstractPlayer {
 		getCard(d.takeCard());
 	}
 
+	public String getLastCardVisualisation() {
+		return playerCards.get(playerCards.size() - 1).getVisualization();
+	}
 }
