@@ -27,6 +27,6 @@ var refillParams = {
 	action : "REFILL",
 	userId : "casualPlayer"
 }
-var restAdress="http://black-jakk.rhcloud.com/rest";
-//var restAdress="http://localhost:8080/servletBlackJack/rest";
+//var restAdress="http://black-jakk.rhcloud.com/rest";
+var restAdress="http://localhost:8080/servletBlackJack/rest";
 	//window.location+'rest';
