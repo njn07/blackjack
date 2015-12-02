@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
+import persistence.UserManager;
 import routing.GamesRouter;
 import users.User;
 import utils.JSONParser;
 import utils.Utils;
-import auth.UserManager;
 
 @WebServlet("/rest")
 public class restServlet extends HttpServlet {
@@ -30,14 +30,13 @@ public class restServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		String userId = request.getParameter("userId");
-		if (Utils.isNullOrEmpty(action, userId)) {
+		if (Utils.isNullOrEmpty(action)) {
 			respond(response, Errors.badParams());
 		}
-		System.out.println("=== request from"  + userId
-				+ " with action" + action + " ===");
+		System.out.println("=== request with action" + action + " ===");
 		if (!isRegistered(request)) {
 			System.out.println("user is not registered");
+			String userId=request.getSession().getId();
 			HashMap<String, String> responseResult = router
 					.handleUnregisteredUserRequest(userId, action);
 			respond(response, responseResult);

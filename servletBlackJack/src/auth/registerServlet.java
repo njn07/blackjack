@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import persistence.PersistenceException;
+import persistence.UserManager;
 import users.User;
+import utils.Utils;
 
 @WebServlet("/register")
 public class registerServlet extends HttpServlet {
@@ -25,14 +28,25 @@ public class registerServlet extends HttpServlet {
 		String userLogin = request.getParameter("nickname");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		manager.addUser(new User(userLogin, email, password, DEFAULT_BALANCE,
-				0, 0, 0));
+		if(Utils.isNullOrEmpty(userLogin,email,password)){
+			response.sendRedirect("registration.jsp");
+			return;
+		}
+		try {
+			manager.addUser(new User(userLogin, email, password, DEFAULT_BALANCE,
+					0, 0, 0,0));
+		} catch (PersistenceException e) {
+			System.out.println(e.getMessage());
+			request.setAttribute("errorMessage", "This login already exists");
+			request.getRequestDispatcher("registration.jsp").forward(request, response);
+			return;
+		}
 		redirectSuccess(request,response);
 	}
 
 	private void redirectSuccess(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		response.sendRedirect("login.jsp");		
+		response.sendRedirect("login");		
 	}
 
 }

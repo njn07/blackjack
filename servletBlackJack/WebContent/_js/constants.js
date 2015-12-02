@@ -15,6 +15,10 @@ var gameStartParams = {
 	action : "GAMESTART",
 	userId : "casualPlayer"
 };
+var endGameParams = {
+		action : "RESTART",
+		userId : "casualPlayer"
+	};
 var betParams = {
 	action : "PLACEBET",
 	userId : "casualPlayer"
@@ -29,4 +33,3 @@ var refillParams = {
 }
 //var restAdress="http://black-jakk.rhcloud.com/rest";
 var restAdress="http://localhost:8080/servletBlackJack/rest";
-	//window.location+'rest';

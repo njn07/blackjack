@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
+<title>Black Jack</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/styles.css" />

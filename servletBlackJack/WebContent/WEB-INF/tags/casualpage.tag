@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<title><jsp:invoke fragment="header"></jsp:invoke> - BlackJack</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="_css/styles.css">
 </head>
@@ -10,16 +11,13 @@
 	<div id="content">
 		<div id="container">
 			<row id="part">
-			<div id="pageheader" class="col-md-12"
-				style="background-color: green;">
+			<div id="pageheader" class="col-md-12">
 				<div class="col-md-8">
-					<h1 style="color: black;">Black Jack</h1>
-					<p>here must be some cute logo or picture</p>
 				</div>
 				<div class="col-md-4 text-right">
 					<c:choose>
 						<c:when test="${not empty sessionScope.user }">
-							<h3>You are ${sessionScope.user.getLogin() }</h3>
+							<h2>You are ${sessionScope.user.getLogin() }</h2>
 							<form action="logout" method="post">
 								<input type="submit" value="Log out" />
 							</form>
@@ -38,6 +36,10 @@
 			<row>
 			<div id="menu" class="col-md-12 ">
 				<a href="game.jsp" class="btn btn-info" role="button">Play Game</a>
+				<c:if test="${not empty sessionScope.user }">
+				<a href="user" class="btn btn-info" role="button">My Profile</a>
+				</c:if>
+				<a href="complain" class="btn btn-info" role="button">Contact us</a>
 			</div>
 			</row> </row>
 			<row>

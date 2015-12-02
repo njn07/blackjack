@@ -84,7 +84,7 @@ public class GamesRouter {
 			return game;
 		} catch (NullPointerException ex) {
 			System.out.println("creating new game for "+userId);
-			games.put(userId, new BlackJackGame());
+			games.put(userId, new BlackJackGame(userId));
 			return games.get(userId);
 		}
 	}

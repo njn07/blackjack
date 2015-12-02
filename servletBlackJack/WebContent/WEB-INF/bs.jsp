@@ -8,7 +8,7 @@
 <title></title>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="styles/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="styles/styles.css" />
+<link rel="stylesheet" type="text/css" href="styles/stylesbs.css" />
 <script src="_js/lib/jquery-2.1.1.js"></script>
 <script src="_js/lib/jquery.flip.js"></script>
 <script src="_js/lib/bootbox.min.js"></script>
@@ -26,8 +26,8 @@
 </head>
 <body>
 
-
-	<div class="row">
+<container>
+	<row>
 		<div id="side" class="col-sm-4">
 			<img src="img/cards/background.png" class="card" />
 		</div>
@@ -108,15 +108,10 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</div>
-	<div class="row">
+	</row>
+	<row>
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
-			<div id="right" style="padding-top: 50px; padding-bottom: 120px">
-				<div id="playerSum" style="padding-right: 30px"></div>
-				<!--тут будут очки игрока-->
-			</div>
-
 		</div>
 		<div class="col-sm-4">
 			<div style="padding-top: 120px;">
@@ -127,8 +122,8 @@
 
 			</div>
 		</div>
-	</div>
-	<div class="row">
+	</row>
+	<row>
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
 			<div id="betbar" hidden="true">
@@ -140,8 +135,8 @@
 				</p>
 
 				<div id="slider"
-					style="margin-left: auto; margin-right: auto; width: 60%"></div>
-				<div style="padding-top: 20px">
+					></div>
+				<div>
 					<button class="sendbutton" id="sendBet">Make bet</button>
 				</div>
 			</div>
@@ -150,6 +145,10 @@
 				<button class="button" id="hit">HIT</button>
 				<button class="button" id="stand">STAND</button>
 
+			</div>
+			<div id="right">
+				<div id="playerSum"></div>
+				<!--тут будут очки игрока-->
 			</div>
 			<div id="left">
 				<img src="img/cards/background.png" id="playerCard0" class="card"
@@ -200,12 +199,11 @@
 			</div>
 		</div>
 		<div class="col-sm-4">
-			<div id="side" class="col-sm-4"
-				style="padding-top: 20px; text-align: center;">
+			<div id="side" class="col-sm-4">
 
 
 
-				<div style="padding-top: 120px;">
+				<div>
 					<p id="balance">
 						Balance: <br />
 					</p>
@@ -215,7 +213,7 @@
 				</c:if>
 			</div>
 		</div>
-	</div>
-
+	</row>
+</container>
 </body>
 </html>

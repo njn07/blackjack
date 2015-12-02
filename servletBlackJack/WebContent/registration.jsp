@@ -2,7 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <t:casualpage>
+<jsp:attribute name="header">Registration</jsp:attribute>
+	<jsp:body>
 	<div class="register">
+		${errorMessage}
 		<form action="register" method="post">
 			<label>nickname:</label> <input type="text" required autofocus
 				name="nickname"></input><br> <label>email:</label> <input
@@ -12,4 +15,5 @@
 			<input class="regButton" type="submit" value="register!"></input><br>
 		</form>
 	</div>
+	</jsp:body>
 </t:casualpage>

@@ -8,9 +8,9 @@ import game.GameState;
 import java.util.Date;
 import java.util.HashMap;
 
+import persistence.UserManager;
 import users.DealerPlayer;
 import users.HumanPlayer;
-import auth.UserManager;
 import deckpac.Deck;
 
 public class BlackJackGame {
@@ -127,20 +127,20 @@ public class BlackJackGame {
 	}
 
 	protected void setBalance(String userId, int chipCount) {
-		manager.setBalance(userId, player.getChipCount());
+		//manager.setBalance(userId, player.getChipCount());
 
 	}
 
 	protected void processGetBalance(String userId,
 			HashMap<String, String> result) {
-		int playersMoney = manager.getBalance(userId);
-		player.setChipCount(playersMoney);
+		//int playersMoney = manager.getBalance(userId);
+		//player.setChipCount(playersMoney);
 		result.put("balance", Integer.toString(player.getChipCount()));
 	}
 
 	protected void refill(HashMap<String, String> result, String username) {
 		player.refill();
-		manager.setBalance(username, player.getChipCount());
+		//manager.setBalance(username, player.getChipCount());
 		System.out.println("refilling player"+username+" his balance is now "+player.getChipCount());
 		result.put("refill", Integer.toString(player.getChipCount()));
 	}

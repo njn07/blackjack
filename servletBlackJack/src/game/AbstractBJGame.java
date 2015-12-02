@@ -26,13 +26,13 @@ public abstract class AbstractBJGame {
 	protected void Restart() {
 		dealer.update();
 		player.update();
-		deck=new Deck();
+		deck = new Deck();
 	}
 
 	public HashMap<String, String> respond(String userId, String command) {
-		System.out.print(this.getClass().getSimpleName()+": ");
-		System.out.println("command " + command + " from "
-				+ userId + " game state: " + state);
+		System.out.print(this.getClass().getSimpleName() + ": ");
+		System.out.println("command " + command + " from " + userId
+				+ " game state: " + state);
 		updateLaunchedTime();
 		try {
 			HashMap<String, String> result = new HashMap<String, String>();
@@ -46,12 +46,17 @@ public abstract class AbstractBJGame {
 				return processBet(result, command);
 			}
 			if (command.equals("GETBALANCE")) {
+				System.out.println("getting balance");
+				if (state != GameState.Finished) {
+					return Errors.badParams();
+				}
+				System.out.println(state != GameState.Finished);
 				processGetBalance(userId, result);
 				return result;
 			}
 			if (command.equals("REFILL")) {
 				if (state == GameState.Finished) {
-					System.out.println(userId+" is refilled with 1000!");
+					System.out.println(userId + " is refilled with 1000!");
 					refill(result, userId);
 					return result;
 				} else {
@@ -59,13 +64,8 @@ public abstract class AbstractBJGame {
 							"can't refill while game ongoing!");
 				}
 			}
-			if (command == "RESULT") {
-				// DEBUG COMMAND
-				Restart();
-				player = new HumanPlayer();
-				result.put("DEBUG",
-						" Game has been restarted! Balance is refilled");
-				state = GameState.Finished;
+			if (command.equals("RESTART")) {
+				hardRestart(result);
 				return result;
 			}
 			switch (command) {
@@ -104,6 +104,14 @@ public abstract class AbstractBJGame {
 			Restart();
 			return Errors.getRestart();
 		}
+	}
+
+	protected void hardRestart(HashMap<String, String> result) {
+		Restart();
+		player = new HumanPlayer();
+		result.put("DEBUG", " Game has been restarted! Balance is default");
+		state = GameState.Finished;
+		System.out.println("restarted!");
 	}
 
 	protected void processGameOver(String userId, HashMap<String, String> result) {
@@ -176,7 +184,8 @@ public abstract class AbstractBJGame {
 
 	protected boolean gameOver(HashMap<String, String> result, String userId) {
 		String resString = result.get("gameStatus");
-		System.out.println("[GAME OVER: player "+userId+" result "+resString+"]" );
+		System.out.println("[GAME OVER: player " + userId + " result "
+				+ resString + "]");
 		if (resString.equals("PLAYER_BUSTED")
 				|| resString.equals("DEALER_WINS")) {
 			return true;
@@ -184,12 +193,15 @@ public abstract class AbstractBJGame {
 		if (resString.equals("DEALER_BUSTED")
 				|| resString.equals("PLAYER_WINS")) {
 			setWinChips(player, userId);
-			result.put("winSum", Integer.toString(player.getPot() * 2));
+			if (player.sumPoints() == 21) {
+				result.put("winSum", Integer.toString(player.getPot() / 2 * 3));
+			} else {
+				result.put("winSum", Integer.toString(player.getPot() * 2));
+			}
 			return true;
 		}
 		if (resString.equals("TIE")) {
 			setTieChips(player, userId);
-			// System.out.println("tie, playe");
 			return true;
 		}
 		return false;

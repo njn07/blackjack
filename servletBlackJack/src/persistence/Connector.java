@@ -8,7 +8,7 @@ public class Connector {
 	private static final String LOGIN = "adminfwcGvfg";
 	private static final String PASSWORD = "M6IqEsEpMEBu";
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String HOST = "jdbc:mysql://127.6.40.2:3306";
+	private static final String HOST = "jdbc:mysql://127.6.40.2:3306/black";
 
 	private static Connection connection;
 	
@@ -23,7 +23,7 @@ public class Connector {
 			connection = DriverManager.getConnection(HOST, LOGIN, PASSWORD);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			
 			throw new SQLException("Connection Failed! Check output console");
 		}
 		return connection;

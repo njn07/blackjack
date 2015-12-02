@@ -2,12 +2,10 @@ package users;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3210440699370088846L;
+
+	private static final long serialVersionUID = 8512018415325193791L;
 	private String login;
 	private String email;
 	private String password;
@@ -15,12 +13,13 @@ public class User implements Serializable {
 	private int games_played;
 	private int games_won;
 	private int games_lost;
+	private int games_draws;
 
 	public User() {
 	}
 
-	public User(String login, String email, String password, int balance,
-			int games_played, int games_won, int games_lost) {
+	public User(String login, String email, String password, int balance, int games_played, int games_won,
+			int games_lost, int games_draws) {
 		super();
 		this.login = login;
 		this.email = email;
@@ -29,6 +28,7 @@ public class User implements Serializable {
 		this.games_played = games_played;
 		this.games_won = games_won;
 		this.games_lost = games_lost;
+		this.games_draws = games_draws;
 	}
 
 	public String getLogin() {
@@ -64,7 +64,7 @@ public class User implements Serializable {
 	}
 
 	public int getGames_played() {
-		return this.games_lost + this.games_won;
+		return games_played;
 	}
 
 	public void setGames_played(int games_played) {
@@ -87,12 +87,18 @@ public class User implements Serializable {
 		this.games_lost = games_lost;
 	}
 
-	@Override
-	public String toString() {
-		return "User [login=" + login + ", email=" + email + ", password="
-				+ password + ", balance=" + balance + ", games_played="
-				+ games_played + ", games_won=" + games_won + ", games_lost="
-				+ games_lost + "]";
+	public int getGames_draws() {
+		return games_draws;
 	}
 
+	public void setGames_draws(int games_draws) {
+		this.games_draws = games_draws;
+	}
+
+	@Override
+	public String toString() {
+		return "User [login=" + login + ", email=" + email + ", password=" + password + ", balance=" + balance
+				+ ", games_played=" + games_played + ", games_won=" + games_won + ", games_lost=" + games_lost
+				+ ", games_draws=" + games_draws + "]";
+	}
 }

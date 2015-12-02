@@ -11,6 +11,15 @@ import deckpac.Deck;
 public class HumanPlayer extends AbstractPlayer {
 
 	int pot;// a pot between dealer and player
+	User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getPot() {
 		return pot;
@@ -30,7 +39,7 @@ public class HumanPlayer extends AbstractPlayer {
 	 *            money on player's account
 	 */
 	public void TakeMoneyToTable(int amount) {
-		
+
 	}
 
 	@Override

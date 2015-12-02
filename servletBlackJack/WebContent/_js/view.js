@@ -80,8 +80,11 @@ var status = data["gameStatus"];
 	}
 	}
 function setCardImage(cardOwner, cardName, index) {
+	if(cardName!=undefined){
 	$("#" + cardOwner + index).show('slow');
 	document.getElementById(cardOwner + index).src = "img/cards/" + cardName + ".png";
+	}
+	else fatalError();
 }
 function setPlayerScore(score){
 if(score!=-1)

@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <t:casualpage>
+	<jsp:attribute name="header">User page</jsp:attribute>
+	<jsp:body>
 	<div class="register">
 		<c:choose>
 			<c:when test="${not empty sessionScope.user}">
@@ -17,7 +19,7 @@
 				</form>
 				<form action="login" method="post">
 					<input type="hidden" name="Logout" value="Logout" /> <input
-						type="submit" value="Log out" />
+							type="submit" value="Log out" />
 				</form>
 			</c:when>
 			<c:otherwise>
@@ -26,4 +28,5 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+	</jsp:body>
 </t:casualpage>

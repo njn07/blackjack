@@ -4,19 +4,21 @@ $(function() {
 	$(".refillButton").click(function() {
 		$.getJSON(restAdress, refillParams, refill);
 	})
-	$(".sbutton").click(function() {
-		if (balanceAmount < 1) {
-			swal("Oops, you are out of money... refill them and play some more!(available only to registered users)");
-			return;
-		}
-		refreshView();
-		$.getJSON(restAdress, gameStartParams, gameStart);
-		$("#betbar").toggle('slow');
-		$(".refillButton").toggle('slow');
-		setInfoText("make bet");
+	$(".sbutton")
+			.click(
+					function() {
+						if (balanceAmount < 1) {
+							swal("Oops, you are out of money... refill them and play some more!(available only to registered users)");
+							return;
+						}
+						refreshView();
+						$.getJSON(restAdress, gameStartParams, gameStart);
+						$("#betbar").toggle('slow');
+						$(".refillButton").toggle('slow');
+						setInfoText("make bet");
 
-		document.getElementById('amount').focus();
-	});
+						document.getElementById('amount').focus();
+					});
 	$("#sendBet").click(function() {
 		var bid = document.getElementById('amount').value;
 		var maxAmount = parseInt($("#slider").slider("option", "max"));
@@ -52,7 +54,18 @@ $(function() {
 		// swal("Here we are", "LET'S SHUFFLE UP AND DEAL");
 	}, 500);
 });
+function duplicateGameError() {
+	buttonBlock=true;
+	swal("Oops!","You are trying to play more than 1 game at once! If you have a wish, you may contact us(you will be redirected in a few seconds)");
+	setTimeout(function() {
+		window.location.replace("complain");
+	}, 5000);
+}
 function balance(data) {
+	if (data['error'] != undefined) {
+		duplicateGameError();
+		return;
+	}
 	document.getElementById("balance").innerHTML = "Balance:<br/>"
 			+ data['balance'];
 	console.log(data['balance']);
@@ -63,31 +76,37 @@ function refill(data) {
 	$.getJSON(restAdress, balanceParams, balance);
 }
 function redirectToLogin() {
-	redirect('login','post');
+	redirect('login', 'post');
 }
 function redirectToRegister() {
 	window.location.replace("registration.jsp");
 }
 function redirectToProfile() {
-	window.location.replace("userpage.jsp");
+	window.location.replace("user");
 }
-function logout(){
-var url = 'login';
-var form = $('<form action="login" method="post">' +
-  '<input type="hidden" class="logButton" name="Logout" value="Logout" />'+
-  '<input type="submit" value="Log out" /></form>');
-$('body').append(form);
-$(form).submit();
+window.onbeforeunload = function() {
+	$.getJSON(restAdress, endGameParams, function(data){});
+};
+function fatalError(){
+	
+}
+function logout() {
+	var url = 'login';
+	var form = $('<form action="login" method="post">'
+			+ '<input type="hidden" class="logButton" name="Logout" value="Logout" />'
+			+ '<input type="submit" value="Log out" /></form>');
+	$('body').append(form);
+	$(form).submit();
 }
 var redirect = function(url, method) {
-    var form = document.createElement('form');
-    form.method = method;
-    form.appendChild(document.getElementById('loginName'));
-    form.appendChild(document.getElementById('loginPassword'));
-    form.action = url;
-    form.submit();
+	var form = document.createElement('form');
+	form.method = method;
+	form.appendChild(document.getElementById('loginName'));
+	form.appendChild(document.getElementById('loginPassword'));
+	form.action = url;
+	form.submit();
 };
-//redirect('http://www.example.com', 'post');
+// redirect('http://www.example.com', 'post');
 function setNickName() {
 	console.log(restAdress + ' adress');
 	var date = new Date();
