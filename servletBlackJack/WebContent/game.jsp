@@ -29,108 +29,114 @@
 
 
 	<div class="row" id="first">
-	<div class="col-xs-4" class="deck">
-		<img src="img/cards/background.png" class="card"  />
-	</div>
+		<div class="col-xs-4" class="deck">
+			<img src="img/cards/background.png" class="card" />
+		</div>
 
 
 
 
-	<div class="col-xs-4">
+		<div class="col-xs-4">
 
-		<div>
-			
-			<!--полученные карты диллера-->
-			<div style="position: relative;display:inline-block;">
-			<div id="dealerSum" style="position:absolute;margin-left:-150px;"></div>
-				<img src="img/cards/background.png" id="dealerCard0" class="card"
-					style="position: absolute;" hidden="hidden" />
-				<!--15-->
-				<img src="img/cards/background.png" id="dealerCard1" class="card"
-					style="position: absolute; margin-left: 25px" hidden="hidden" />
-				<!--1-->
-				<img src="img/cards/background.png" id="dealerCard2" class="card"
-					style="position: absolute; margin-left: 50px;" hidden="hidden" />
-				<!--2-->
-				<img src="img/cards/background.png" id="dealerCard3" class="card"
-					style="position: absolute; margin-left: 75px;" hidden="hidden" />
-				<!--3-->
-				<img src="img/cards/background.png" id="dealerCard4" class="card"
-					style="position: absolute; margin-left: 100px;" hidden="hidden" />
-				<!--4-->
-				<img src="img/cards/background.png" id="dealerCard5" class="card"
-					style="position: absolute; margin-left: 125px;" hidden="hidden" />
-				<!--5-->
-				<img src="img/cards/background.png" id="dealerCard6" class="card"
-					style="position: absolute; margin-left: 150px;" hidden="hidden" />
-				<!--6-->
-				<img src="img/cards/background.png" id="dealerCard7" class="card"
-					style="position: absolute; margin-left: 175px;" hidden="hidden" />
-				<!--7-->
-				<img src="img/cards/background.png" id="dealerCard8" class="card"
-					style="position: absolute; margin-left: 200px;" hidden="hidden" />
-				<!--8-->
-				<img src="img/cards/background.png" id="dealerCard9" class="card"
-					style="position: absolute; margin-left: 225px;" hidden="hidden" />
-				<!--9-->
-				<img src="img/cards/background.png" id="dealerCard10" class="card"
-					style="position: absolute; margin-left: 250px;" hidden="hidden" />
-				<!--10-->
-				<img src="img/cards/background.png" id="dealerCard11" class="card"
-					style="position: absolute; margin-left: 275px;" hidden="hidden" />
-				<!--11-->
-				<img src="img/cards/background.png" id="dealerCard12" class="card"
-					style="position: absolute; margin-left: 300px;" hidden="hidden" />
-				<!--12-->
-				<img src="img/cards/background.png" id="dealerCard13" class="card"
-					style="position: absolute; margin-left: 325px;" hidden="hidden" />
-				<!--13-->
-				<img src="img/cards/background.png" id="dealerCard14" class="card"
-					style="position: absolute; margin-left: 350px;" hidden="hidden" />
-				<!--14-->
+			<div>
+
+				<!--полученные карты диллера-->
+				<div style="position: relative; display: inline-block;">
+					<div id="dealerSum"
+						style="position: absolute; margin-left: -150px;"></div>
+					<img src="img/cards/background.png" id="dealerCard0" class="card"
+						style="position: absolute;" hidden="hidden" />
+					<!--15-->
+					<img src="img/cards/background.png" id="dealerCard1" class="card"
+						style="position: absolute; margin-left: 25px" hidden="hidden" />
+					<!--1-->
+					<img src="img/cards/background.png" id="dealerCard2" class="card"
+						style="position: absolute; margin-left: 50px;" hidden="hidden" />
+					<!--2-->
+					<img src="img/cards/background.png" id="dealerCard3" class="card"
+						style="position: absolute; margin-left: 75px;" hidden="hidden" />
+					<!--3-->
+					<img src="img/cards/background.png" id="dealerCard4" class="card"
+						style="position: absolute; margin-left: 100px;" hidden="hidden" />
+					<!--4-->
+					<img src="img/cards/background.png" id="dealerCard5" class="card"
+						style="position: absolute; margin-left: 125px;" hidden="hidden" />
+					<!--5-->
+					<img src="img/cards/background.png" id="dealerCard6" class="card"
+						style="position: absolute; margin-left: 150px;" hidden="hidden" />
+					<!--6-->
+					<img src="img/cards/background.png" id="dealerCard7" class="card"
+						style="position: absolute; margin-left: 175px;" hidden="hidden" />
+					<!--7-->
+					<img src="img/cards/background.png" id="dealerCard8" class="card"
+						style="position: absolute; margin-left: 200px;" hidden="hidden" />
+					<!--8-->
+					<img src="img/cards/background.png" id="dealerCard9" class="card"
+						style="position: absolute; margin-left: 225px;" hidden="hidden" />
+					<!--9-->
+					<img src="img/cards/background.png" id="dealerCard10" class="card"
+						style="position: absolute; margin-left: 250px;" hidden="hidden" />
+					<!--10-->
+					<img src="img/cards/background.png" id="dealerCard11" class="card"
+						style="position: absolute; margin-left: 275px;" hidden="hidden" />
+					<!--11-->
+					<img src="img/cards/background.png" id="dealerCard12" class="card"
+						style="position: absolute; margin-left: 300px;" hidden="hidden" />
+					<!--12-->
+					<img src="img/cards/background.png" id="dealerCard13" class="card"
+						style="position: absolute; margin-left: 325px;" hidden="hidden" />
+					<!--13-->
+					<img src="img/cards/background.png" id="dealerCard14" class="card"
+						style="position: absolute; margin-left: 350px;" hidden="hidden" />
+					<!--14-->
+
+				</div>
+				<!--тут будут очки диллера-->
 
 			</div>
-			<!--тут будут очки диллера-->
-
-		</div>
 		</div>
 		<div id="userInfo" class="col-xs-4">
 			<c:choose>
 				<c:when test="${not empty sessionScope.user}">
-					<label>Welcome, ${sessionScope.user.getLogin()}!<br /> Good
-						luck and have fun!<br /></label><br />
-					<button class="logButton" onClick="redirectToProfile()">My
-						Profile</button><br />
-					<button class="logButton" onClick="logout()">Log out</button>
+					<label>Welcome, ${sessionScope.user.getLogin()}!<br />
+						Good luck and have fun!<br /></label>
+					<br />
+					<div class="col-md-12">
+						<button class="btn-success" onClick="redirectToProfile()">Profile</button>
+						<button class="btn-success" onClick="logout()">Logout</button>
+					</div>
 					<br />
 				</c:when>
 				<c:otherwise>
-					<p">
-						Username <br /> <input type="text" name="username" id="loginName"/>
+					<p>
+						Username <br /> <input type="text" style="color: orange;"
+							name="username" id="loginName" />
 					</p>
 					<p>
-						Password <br /> <input type="password" name="password" id="loginPassword"/>
+						Password <br /> <input type="password" style="color: orange;"
+							name="password" id="loginPassword" />
 					</p>
-					<button class="logButton" onClick="redirectToLogin()">LOG
-						IN</button>
-					<button class="logButton" onClick="redirectToRegister()">Register</button>
+					<button class="btn-info" onClick="redirectToLogin()">Log
+						in</button>
+					<button class="btn-info" onClick="redirectToRegister()">Register</button>
 				</c:otherwise>
 			</c:choose>
 		</div>
-		</div>
-		<div class="row" id="second">
+	</div>
+	<div class="row" id="second">
 		<div class="col-xs-4"></div>
 		<div class="col-xs-4">
-		<div id="start" style="display: true">
-			<div id="infotext" class="bigtext"></div>
-			<button class="sbutton" id="startButton">START</button>
+			<div id="start" style="display: true">
+				<div id="infotext" class="bigtext"></div>
+				<button class="sbutton" id="startButton"
+					style="background-image: url(img/button.png);">START</button>
 			</div>
-			<div style="position: relative;display:inline-block;" >
-				<div id="playerSum" style="position:absolute;margin-left:-150px;"></div>
+			<div style="position: relative; display: inline-block;">
+				<div id="playerSum" style="position: absolute; margin-left: -150px;"></div>
 				<!--тут будут очки игрока-->
 
 
-				
+
 				<img src="img/cards/background.png" id="playerCard0" class="card"
 					style="position: absolute;" hidden="hidden" />
 				<!--15-->
@@ -176,7 +182,7 @@
 				<img src="img/cards/background.png" id="playerCard14" class="card"
 					style="position: absolute; margin-left: 350px;" hidden="hidden" />
 				<!--14-->
-		</div>
+			</div>
 		</div>
 		<div class="col-xs-4">
 			<p id="bid" class="bigtext">
@@ -185,45 +191,41 @@
 			<!--ставка-->
 
 		</div>
-		</div>
+	</div>
 
-<div  class="row">
+	<div class="row">
 		<div class="col-xs-4"></div>
 		<div class="col-xs-4">
-		
-			
 			<div id="panel" hidden="true">
-
-			<button class="button" id="hit">HIT</button>
-			<button class="button" id="stand">STAND</button>
+				<button class="button" id="hit">HIT</button>
+				<button class="button" id="stand">STAND</button>
 			</div>
 			<div id="betbar" hidden="true">
-			<p>
-				<label for="amount">Your bid:</label> <input type="number"
-					id="amount"
-					style="border: 0; color: #f6931f; font-weight: bold; text-align: center"
-					maxlength="12">
-			</p>
-			<div id="slider"></div>
-			<div style="padding-top: 20px">
-				<button class="sendbutton" id="sendBet">Make bet</button>
+				<p>
+					<label for="amount">Your bid:</label> <input type="number"
+						id="amount"
+						style="border: 0; color: #f6931f; font-weight: bold; text-align: center"
+						maxlength="12">
+				</p>
+				<div id="slider"></div>
+				<div style="padding-top: 20px">
+					<button class="sendbutton" id="sendBet">Make bet</button>
+				</div>
 			</div>
-			
 		</div>
+		<div class="col-xs-4">
+			<div>
+				<c:if test="${not empty sessionScope.user }">
+					<button class="btn-warning">REFILL</button>
+				</c:if>
+				<p id="balance" class="bigtext">
+					Balance: <br />
+				</p>
+			</div>
 
 		</div>
-		<div class="col-xs-4" >
-		<div >
-			<p id="balance" class="bigtext">
-				Balance: <br />
-			</p>
-		</div>
-		<c:if test="${not empty sessionScope.user }">
-			<button class="refillButton">REFILL</button>
-		</c:if>
-		</div>
-		</div>
-		
+	</div>
+
 
 
 

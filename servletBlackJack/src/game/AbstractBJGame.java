@@ -108,7 +108,7 @@ public abstract class AbstractBJGame {
 
 	protected void hardRestart(HashMap<String, String> result) {
 		Restart();
-		player = new HumanPlayer();
+		//player = new HumanPlayer();
 		result.put("DEBUG", " Game has been restarted! Balance is default");
 		state = GameState.Finished;
 		System.out.println("restarted!");

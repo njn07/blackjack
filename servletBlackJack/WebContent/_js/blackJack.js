@@ -22,7 +22,6 @@ $(function() {
 	$("#sendBet").click(function() {
 		var bid = document.getElementById('amount').value;
 		var maxAmount = parseInt($("#slider").slider("option", "max"));
-		console.log(maxAmount);
 		if (bid > maxAmount || bid <= 0) {
 			swal("Warning", "please make correct bet!");
 			return;
@@ -56,9 +55,10 @@ $(function() {
 });
 function duplicateGameError() {
 	buttonBlock=true;
+	$('.sbutton').blur();
 	swal({
 		title: "Oops!", 
-			text:"You are trying to play more than 1 game at once! If you have a wish, you may contact us(you will be redirected in a few seconds)",
+			text: DUPLICATEGAMETEXT,
 			timer: 5000,
 			showConfirmButton: false
 		});
@@ -74,11 +74,10 @@ function balance(data) {
 	}
 	document.getElementById("balance").innerHTML = "Balance: <br/>"
 			+ data['balance'];
-	console.log(data['balance']);
 	balanceAmount = data['balance'];
 }
 function refill(data) {
-	swal('You have refilled your wallet with 1000 coins!');
+	swal(REFILLMESSAGE);
 	$.getJSON(restAdress, balanceParams, balance);
 }
 function redirectToLogin() {
@@ -115,12 +114,10 @@ var redirect = function(url, method) {
 	form.action = url;
 	form.submit();
 };
-// redirect('http://www.example.com', 'post');
 function setNickName() {
-	console.log(restAdress + ' adress');
+	addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('img/alert.jpg');");
 	var date = new Date();
 	var currentTime = date.getTime() + date.getMilliseconds();
-	console.log("user name is now " + currentTime);
 	userNickName = currentTime;
 	hitParams.userId = userNickName;
 	betParams.userId = userNickName;
