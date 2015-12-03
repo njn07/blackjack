@@ -8,12 +8,21 @@
 	<div class="register">
 		<c:choose>
 			<c:when test="${not empty sessionScope.user}">
-				<br /> your login: ${sessionScope.user.getLogin()} <br /> your
-		money: ${sessionScope.user.getBalance()} <br /> your email:
-		${sessionScope.user.getEmail()} <br /> games played:
-		${sessionScope.user.getGames_played()} <br /> games won:
-		${sessionScope.user.getGames_won()} <br /> games lost:
-		${sessionScope.user.getGames_lost()} <br />
+				<br /> your login: ${sessionScope.user.getLogin()} <br />
+				your money: ${sessionScope.user.getBalance()} <br />
+		 your email: ${sessionScope.user.getEmail()} <br /> 
+		<table style="width: 100%" class="table">
+			<tr>
+				<td>games played:</td>
+				<td>games won:</td>
+				<td>games lost:</td>
+			</tr>
+			<tr>
+				<td>${sessionScope.user.getGames_played()}</td>
+				<td>${sessionScope.user.getGames_won()}</td>
+				<td>${sessionScope.user.getGames_lost()}</td>
+			</tr>
+			</table>
 				<form action="game.jsp" method="get">
 					<input type="submit" value="Play BlackJack!" />
 				</form>

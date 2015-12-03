@@ -56,17 +56,23 @@ $(function() {
 });
 function duplicateGameError() {
 	buttonBlock=true;
-	swal("Oops!","You are trying to play more than 1 game at once! If you have a wish, you may contact us(you will be redirected in a few seconds)");
+	swal({
+		title: "Oops!", 
+			text:"You are trying to play more than 1 game at once! If you have a wish, you may contact us(you will be redirected in a few seconds)",
+			timer: 5000,
+			showConfirmButton: false
+		});
+	cardQuantity=parseInt("0"); 
 	setTimeout(function() {
 		window.location.replace("complain");
 	}, 5000);
-}
+	}
 function balance(data) {
 	if (data['error'] != undefined) {
 		duplicateGameError();
 		return;
 	}
-	document.getElementById("balance").innerHTML = "Balance:<br/>"
+	document.getElementById("balance").innerHTML = "Balance: <br/>"
 			+ data['balance'];
 	console.log(data['balance']);
 	balanceAmount = data['balance'];
@@ -84,9 +90,12 @@ function redirectToRegister() {
 function redirectToProfile() {
 	window.location.replace("user");
 }
-window.onbeforeunload = function() {
-	$.getJSON(restAdress, endGameParams, function(data){});
-};
+window.onbeforeunload = function() { 
+	if (cardQuantity > 0) { 
+	$.getJSON(restAdress, endGameParams, function(data) { 
+	}); 
+	} 
+	};
 function fatalError(){
 	
 }
@@ -138,7 +147,7 @@ function processBet(data) {
 		swal("error! game is restarted, refresh your page");
 		return;
 	}
-	document.getElementById("balance").innerHTML = "Balance:<br/>"
+	document.getElementById("balance").innerHTML = "Balance: <br/>"
 			+ data['balance'];
 	dealerBetPlay(data);
 	playerPlay(data);

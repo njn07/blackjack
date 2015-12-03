@@ -21,12 +21,13 @@ public class ComplaintServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("WEB-INF/view/complaint.jsp").forward(req, resp);
+		req.getRequestDispatcher("WEB-INF/view/complaint.jsp").forward(req,
+				resp);
 	}
 
 	private void redirectSuccess(HttpServletRequest req,
-			HttpServletResponse resp) throws IOException {
-		resp.sendRedirect("user");
+			HttpServletResponse resp) throws IOException, ServletException {
+		req.getRequestDispatcher("/WEB-INF/view/complaintsuccess.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -34,8 +35,13 @@ public class ComplaintServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String complaintText = req.getParameter("message");
 		if (!Utils.isNullOrEmpty(complaintText)) {
-			System.out.println("new complaint: "+complaintText);
+			System.out.println("new complaint: " + complaintText);
 			redirectSuccess(req, resp);
+			return;
+		} else {
+			req.setAttribute("errormessage", "Complaint must not be empty<br/>");
+			req.getRequestDispatcher("WEB-INF/view/complaint.jsp").forward(req,
+					resp);
 		}
 	}
 }

@@ -23,6 +23,10 @@ public class registerServlet extends HttpServlet {
 		super();
 	}
 
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("registration.jsp").forward(request, response);
+	}
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String userLogin = request.getParameter("nickname");

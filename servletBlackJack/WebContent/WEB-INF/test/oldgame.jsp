@@ -1,10 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<t:casualpage>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Black Jack</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="styles/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="styles/styles.css" />
+<script src="_js/lib/jquery-2.1.1.js"></script>
+<script src="_js/lib/jquery.flip.js"></script>
+<script src="_js/lib/bootbox.min.js"></script>
+<script src="_js/blackJack.js"></script>
+<script src="_js/constants.js"></script>
+<script src="_js/view.js"></script>
+<link rel="stylesheet" href="_js/lib/jquery-ui-1.11.4/jquery-ui.css" />
+<script src="_js/lib/jquery-ui-1.11.4/jquery-ui.js"></script>
+<script src="sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="sweetalert-master/dist/sweetalert.css">
+<script src="_js/slider.js"></script>
+<meta name="viewport" content="target-densitydpi=device-dpi" />
 
-<div id="game" style="background-image: img/bjbg.jpg">
+</head>
+<body>
+
+
+
 	<div id="side">
 		<img src="img/cards/background.png" class="card" />
 
@@ -196,5 +219,8 @@
 			<button class="refillButton">REFILL</button>
 		</c:if>
 	</div>
-	</div>
-</t:casualpage>
+
+
+
+</body>
+</html>

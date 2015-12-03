@@ -8,8 +8,9 @@
 		<form action="login" method="post">
 			<label>login:</label> <input type="text" name="username" required
 				autofocus></input><br> <label>password:</label> <input
-				type="password" name="password" required></input><br> <input
-				class="logButton" type="submit" value="Log in"></input><br>
+				type="password" name="password" required></input><br/>
+				<br/> 
+				<input class="btn btn-info" type="submit" value="Log in"></input><br/>
 		</form>
 		${error}
 	</div>

@@ -194,7 +194,7 @@ public abstract class AbstractBJGame {
 				|| resString.equals("PLAYER_WINS")) {
 			setWinChips(player, userId);
 			if (player.sumPoints() == 21) {
-				result.put("winSum", Integer.toString(player.getPot() / 2 * 3));
+				result.put("winSum", Integer.toString(player.getPot() * 3 / 2));
 			} else {
 				result.put("winSum", Integer.toString(player.getPot() * 2));
 			}

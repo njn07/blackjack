@@ -1,10 +1,16 @@
+
 body {
-    font-family: "Tahoma", Gadget, sans-serif;
+	@font-face {
+   	font-family: BebasNeue;
+   	src: url("font/BebasNeueBold.otf");
+	}
+   font-family: BebasNeue;
     margin:0;
     font-size: 22px;
 	background-image:url(background.jpg);
 	background-size:cover;
-	color:orange;
+	
+	color:#FCF8E3;
   -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
@@ -14,14 +20,21 @@ body {
             user-select: none;
 }       
 
-div#bid p{
-    font-size:30px;
-    text-align:right;
-    padding-left:200px;
+#bid {
+	padding-top:50px;
+}
+
+.col-xs-4 {
+	text-align:center;
+	margin-top:20px;
+}
+
+.bigtext {
+	font-size:50px;
 }
 
 img.card {
-    width:120px;
+    height:160px;
 }
 
 input {
@@ -30,35 +43,14 @@ input {
     font-size:16px;
 }
 
-
-
-#center {
-       margin:0 auto;    
-       width:50%;
-       float:left;
-       text-align:center;
-}
-#side {
-   width:25%;
-   float:left;
-   padding-left:20px;
-   padding-top:20px; 
-   text-align:center;
+#slider {
+	margin-left: auto; 
+	margin-right: auto;
+	width: 60%;
 }
 
-#right {
-    width:50%;
-    text-align:right;
-    float:left;
-    margin:auto;
-    padding-top:50px;
-    padding-bottom:65px;
-}
-#left {
-    width:50%;
-    text-align:left;
-    float:right;
-    padding-top:25px;
+#panel {
+	margin-top: 50px;
 }
 
 .button {
@@ -133,15 +125,18 @@ input {
    vertical-align: middle;
    height:25px;
    }
-#start{
-    padding-top:200px;
-}
-#finish {
-    padding-top:60px;
-}
+
 
 #gameResult {
     font-size:35px;
+}
+        
+#first {
+	height:190px;
+}
+
+#second {
+	height: 240px;
 }
         
 .refillButton {
@@ -189,4 +184,8 @@ button:focus {
    font-family: Georgia, serif;
    text-decoration: none;
    vertical-align: middle;
+   }
+
+   #start {
+   margin-bottom: 20px;
    }

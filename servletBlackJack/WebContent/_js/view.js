@@ -11,7 +11,7 @@ cardQuantity = parseInt("0");
 	setDealerScore(-1);
 	pot=parseInt("0");
 	$(".sbutton").toggle('slow');
-	setBid("Bid: <br />");
+	setBid("Bid: <br />&nbsp");
 	setInfoText("");
 }
 function setBid(income){
@@ -29,6 +29,33 @@ function setSlider(maxValue){
       });
       $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
       $("#amount").keyup(function(event) {
+    	  var data = $("#amount").val();
+	    if (data.length > 0)
+	    {
+	       if (parseInt(data) >= 0 && parseInt(data) <= maxValue)
+	       {
+	           $("#slider").slider("option", "value", data);}
+	       
+	       else
+	       {
+	   if (parseInt(data) < 1)
+	          {
+	     $("#amount").val("1");
+	            $("#slider").slider("option", "value", "1");
+	          }
+	          if (parseInt(data) > maxValue)
+	          {
+	            $("#amount").val(maxValue);
+	            $("#slider").slider("option", "value", maxValue);
+	          }
+	       }
+	    }
+	    else
+	    {
+	      $("#slider").slider("option", "value", "0");
+	    } 
+      });
+      $("#amount").change(function(event) {
     	  var data = $("#amount").val();
 	    if (data.length > 0)
 	    {
@@ -79,9 +106,12 @@ var status = data["gameStatus"];
 			break;
 	}
 	}
+
 function setCardImage(cardOwner, cardName, index) {
 	if(cardName!=undefined){
-	$("#" + cardOwner + index).show('slow');
+		
+
+	$("#" + cardOwner + index).show("slow");
 	document.getElementById(cardOwner + index).src = "img/cards/" + cardName + ".png";
 	}
 	else fatalError();

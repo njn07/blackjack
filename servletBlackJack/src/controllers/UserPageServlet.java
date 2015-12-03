@@ -28,7 +28,7 @@ public class UserPageServlet extends HttpServlet {
 			request.getSession().setAttribute("user", newUser);
 			request.getRequestDispatcher("/WEB-INF/userpage.jsp").forward(request, response);
 		} catch (PersistenceException |NullPointerException e) {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("login");
 		}
 	}
 
