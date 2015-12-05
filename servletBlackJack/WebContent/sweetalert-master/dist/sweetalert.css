@@ -17,8 +17,12 @@ body.stop-scrolling {
   z-index: 10000; }
 
 .sweet-alert {
-  background-color: #008614;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-image: url("../../img/alert.jpg");
+  background-position:center;	
+   font-family: BebasNeue;
+    margin:0;
+    font-size: 22px;
+   background-size:cover;
   width: 478px;
   padding: 17px;
   border-radius: 5px;
@@ -41,18 +45,18 @@ body.stop-scrolling {
       left: 15px;
       right: 15px; } }
   .sweet-alert h2 {
-    color: orange;
+color:#FCF8E3;
     font-size: 30px;
     text-align: center;
     font-weight: 600;
     text-transform: none;
     position: relative;
-    margin: 25px 0;
+    margin: 25px;
     padding: 0;
     line-height: 40px;
     display: block; }
   .sweet-alert p {
-    color: #c1f101;
+color:#FCF8E3;
     font-size: 16px;
     text-align: center;
     font-weight: 300;
@@ -60,6 +64,7 @@ body.stop-scrolling {
     text-align: inherit;
     float: none;
     margin: 0;
+    margin-top:100px;
     padding: 0;
     line-height: normal; }
   .sweet-alert fieldset {
@@ -174,11 +179,11 @@ body.stop-scrolling {
   .sweet-alert button {
   margin-top: 20px;
     border-top: 1px solid #96d1f8;
-   background: #6f787d;
-   background: -webkit-gradient(linear, left top, left bottom, from(#edf0f2), to(#6f787d));
-   background: -webkit-linear-gradient(top, #edf0f2, #6f787d);
-   background: -moz-linear-gradient(top, #edf0f2, #6f787d);
-   background: -o-linear-gradient(top, #edf0f2, #6f787d);
+   background: font-size: 12px;
+   font-family: BebasNeue;
+   height:25px;
+   background-image:url("../../img/button3.png");
+	background-position:center;
    padding: 6px 12px;
    -webkit-border-radius: 4px;
    -moz-border-radius: 4px;
@@ -187,10 +192,8 @@ body.stop-scrolling {
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
    box-shadow: rgba(0,0,0,1) 0 1px 0;
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: #000000;
+	
    font-size: 20px;
-   font-family: Georgia, serif;
-   text-decoration: none;
    vertical-align: middle;
    height:40px; }
     .sweet-alert button:focus {

@@ -6,7 +6,8 @@
 	<jsp:body>
 	<div class="register">
 		<form action="login" method="post">
-			<label>login:</label> <input type="text" name="username" required
+		<br/>
+			<label>login:</label><br/> <input type="text" name="username" required
 				autofocus></input><br> <label>password:</label> <input
 				type="password" name="password" required></input><br/>
 				<br/> 

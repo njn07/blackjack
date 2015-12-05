@@ -3,7 +3,7 @@ $(function() {
 	$.getJSON(restAdress, balanceParams, balance);
 	$(".refillButton").click(function() {
 		$.getJSON(restAdress, refillParams, refill);
-	})
+	});
 	$(".sbutton")
 			.click(
 					function() {
@@ -114,8 +114,16 @@ var redirect = function(url, method) {
 	form.action = url;
 	form.submit();
 };
+function addCSSRule(sheet, selector, rules, index) {
+	if(sheet.insertRule) {
+		sheet.insertRule(selector + "{" + rules + "}", index);
+	}
+	else {
+		sheet.addRule(selector, rules, index);
+	}
+}
 function setNickName() {
-	addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('img/alert.jpg');");
+	addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('../img/alert.jpg');");
 	var date = new Date();
 	var currentTime = date.getTime() + date.getMilliseconds();
 	userNickName = currentTime;
@@ -221,4 +229,5 @@ function processGameOver(data) {
 	setInfoText("game over");
 	$(".sbutton").html("Play again");
 	buttonBlock = false;
+	bj=false;
 }

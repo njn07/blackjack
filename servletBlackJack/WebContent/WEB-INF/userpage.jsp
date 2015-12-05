@@ -8,27 +8,22 @@
 	<div class="register">
 		<c:choose>
 			<c:when test="${not empty sessionScope.user}">
-				<br /> your login: ${sessionScope.user.getLogin()} <br />
-				your money: ${sessionScope.user.getBalance()} <br />
-		 your email: ${sessionScope.user.getEmail()} <br /> 
-		<table style="width: 100%" class="table">
-			<tr>
-				<td>games played:</td>
-				<td>games won:</td>
-				<td>games lost:</td>
-			</tr>
-			<tr>
-				<td>${sessionScope.user.getGames_played()}</td>
-				<td>${sessionScope.user.getGames_won()}</td>
-				<td>${sessionScope.user.getGames_lost()}</td>
-			</tr>
-			</table>
+<p class="label"> Your login</p>
+<p class="value">${sessionScope.user.getLogin()} </p>
+<p class="label"> Your money</p>
+<p class="value">			${sessionScope.user.getBalance()} </p>
+<p class="label">Your Email</p>
+<p class="value">		${sessionScope.user.getEmail()} </p>
+<p class="label"> Games Played</p>
+<p class="value">		${sessionScope.user.getGames_played()} </p>
+<p class="label"> Games Won</p>
+<p class="value">		${sessionScope.user.getGames_won()} </p>
+<p class="label"> Games Lost</p>
+<p class="value">		${sessionScope.user.getGames_lost()} </p>
 				<form action="game.jsp" method="get">
-					<input type="submit" value="Play BlackJack!" />
-				</form>
-				<form action="login" method="post">
-					<input type="hidden" name="Logout" value="Logout" /> <input
-							type="submit" value="Log out" />
+					<div class="chip_outer">
+					<input class="chip_inner" type="submit" value="Play BlackJack!" />
+					</div>
 				</form>
 			</c:when>
 			<c:otherwise>

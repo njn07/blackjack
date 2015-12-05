@@ -7,9 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>BlackJack</title>
 <meta charset="utf-8" />
-<script src="sweetalert-master/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="sweetalert-master/dist/sweetalert.css">	
 <link rel="stylesheet" href="styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/styles.css" />
 <script src="_js/lib/jquery-2.1.1.js"></script>
@@ -20,7 +17,9 @@
 <script src="_js/view.js"></script>
 <link rel="stylesheet" href="_js/lib/jquery-ui-1.11.4/jquery-ui.css" />
 <script src="_js/lib/jquery-ui-1.11.4/jquery-ui.js"></script>
-
+<script src="sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="sweetalert-master/dist/sweetalert.css">
 <script src="_js/slider.js"></script>
 <meta name="viewport" content="target-densitydpi=device-dpi" />
 
@@ -100,31 +99,31 @@
 				<c:when test="${not empty sessionScope.user}">
 					<label>Welcome, ${sessionScope.user.getLogin()}!<br /> Good
 						luck and have fun!<br /></label><br />
-					<button class="logButton" onClick="redirectToProfile()">My
-						Profile</button><br />
-					<button class="logButton" onClick="logout()">Log out</button>
+						<div class="col-md-12">
+					<button class="btn-success" onClick="redirectToProfile()">Profile</button>
+					<button class="btn-success" onClick="logout()">Logout</button>
+					</div>
 					<br />
 				</c:when>
 				<c:otherwise>
 					<p>
-						Username <br /> <input type="text" style="color: orange;" name="username" id="loginName"/>
+						Username <br /> <input type="text" style="color: black;" name="username" id="loginName"/>
 					</p>
 					<p>
-						Password <br /> <input type="password" style="color: orange;" name="password" id="loginPassword"/>
+						Password <br /> <input type="password" style="color: black;" name="password" id="loginPassword"/>
 					</p>
-					<button class="logButton" onClick="redirectToLogin()">LOG
-						IN</button>
-					<button class="logButton" onClick="redirectToRegister()">Register</button>
+					<button class="btn-info" onClick="redirectToLogin()">Log in</button>
+					<button class="btn-info" onClick="redirectToRegister()">Register</button>
 				</c:otherwise>
 			</c:choose>
 		</div>
 		</div>
 		<div class="row" id="second">
-		<div class="col-xs-4"><div id="infotext"></div></div>
+		<div class="col-xs-4"></div>
 		<div class="col-xs-4">
 		<div id="start" style="display: true">
-			
-			<button class="sbutton" id="startButton">START</button>
+			<div id="infotext" class="bigtext"></div>
+			<button class="sbutton" id="startButton" style="background-image: url(img/button.png);">START</button>
 			</div>
 			<div style="position: relative;display:inline-block;" >
 				<div id="playerSum" style="position:absolute;margin-left:-150px;"></div>
@@ -215,13 +214,14 @@
 		</div>
 		<div class="col-xs-4" >
 		<div >
+				<c:if test="${not empty sessionScope.user }">
+			<button class="btn-warning">REFILL</button>
+		</c:if>
 			<p id="balance" class="bigtext">
 				Balance: <br />
 			</p>
 		</div>
-		<c:if test="${not empty sessionScope.user }">
-			<button class="refillButton">REFILL</button>
-		</c:if>
+
 		</div>
 		</div>
 		

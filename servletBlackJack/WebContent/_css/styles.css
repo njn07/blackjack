@@ -212,18 +212,71 @@ button:focus {
 }
 
 .register {
-	width: 250px;
+	width: 300px;
 	clear: both;
-	background-color: rgba(250, 250, 250, 0.85);
-	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.25);
+	padding: 10px;
 	position: center;
-	margin: 40px auto;
+	margin: 30px auto;
 	text-align: center;
+	color: white;
+	border: 2px solid black;
+}
+
+.register .label{
+	margin: 5px auto;
+	border-bottom: 1px dotted rgb(255, 204, 0);
+	width: 60%;
+	color: white;
+}
+
+.register a{
+	text-decoration: none;
+	color: white;
+}
+
+.register a spin{
+	visibility: hidden;
+}
+
+.register a:hover, a:focus{
+	color: rgb(255, 204, 0);
+}
+
+.register .value{
+	margin: 5px;
+	color: rgb(255,216,0);
 }
 
 .register input {
-	width: 100%;
+	width: 70%;
+	height: 7%;
 	clear: both;
+	margin: 10px 0 0 0;
+	border: 5px solid white;
+	border-radius: 25px;
+	font-size: 20px;
+	color: white;
+	background-color: rgba(0,0,0,0);
+}
+
+.register .chip_outer{
+	width: 160px;
+	height: 160px;
+	border: 10px dashed white;
+	border-radius: 50%;
+	margin: auto;
+	background-color: rgb(200,10,10);
+}
+
+.register .chip_inner{
+	border: 1px dottern white;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 5px dotted white;
+	margin: 0;
+	background-color: rgb(200,10,10);
 }
 
 .register .regButton {
@@ -232,6 +285,10 @@ button:focus {
 	background-color: blue;
 	border-radius: 25px;
 	border: 2px solid;
+}
+
+.register a:hover spin{
+	visibility: visible;
 }
 
 nav {
