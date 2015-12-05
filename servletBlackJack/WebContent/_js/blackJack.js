@@ -8,15 +8,19 @@ $(function() {
 			.click(
 					function() {
 						if (balanceAmount < 1) {
-							swal("Oops, you are out of money... refill them and play some more!(available only to registered users)");
+							swal({
+								title:"We're sorry, but you're out of money. ",
+								text:"If you want to continue playing Black Jack, you can refill your balance by pushing ''Refill'' button. It's  vailable only for registered users!"
+							});
 							return;
 						}
+						bj = false;
+
 						refreshView();
 						$.getJSON(restAdress, gameStartParams, gameStart);
 						$("#betbar").toggle('slow');
 						$(".refillButton").toggle('slow');
-						setInfoText("make bet");
-
+						setInfoText("Please, make your bet");
 						document.getElementById('amount').focus();
 					});
 	$("#sendBet").click(function() {
@@ -33,7 +37,7 @@ $(function() {
 
 		$("#betbar").toggle('slow');
 		$("#panel").toggle('slow');
-		setInfoText("choose hit or stand");
+		setInfoText("What's next? HIT or STAND?");
 		document.getElementById('hit').focus();
 	});
 	$("#hit").click(function() {
@@ -43,7 +47,7 @@ $(function() {
 	});
 	$("#stand").click(function() {
 		if (!buttonBlock) {
-			setInfoText("you chose to stand");
+			setInfoText("STAND? Alright.");
 			buttonBlock = true;
 			$.getJSON(restAdress, standParams, viewStandResponse);
 		}
@@ -123,7 +127,6 @@ function addCSSRule(sheet, selector, rules, index) {
 	}
 }
 function setNickName() {
-	addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('../img/alert.jpg');");
 	var date = new Date();
 	var currentTime = date.getTime() + date.getMilliseconds();
 	userNickName = currentTime;
@@ -135,6 +138,7 @@ function setNickName() {
 	balanceParams.userId = userNickName;
 	refillParams.userId = userNickName;
 }
+var bj = false;
 var userNickName = "";
 var balanceAmount = parseInt("0");
 var pot = parseInt("0");
@@ -184,6 +188,7 @@ function hitResponse(data) {
 	setPlayerScore(data["playerSum"]);
 	if (data['playerSum'] == 21) {
 		if (!buttonBlock) {
+			bj = true;
 			buttonBlock = true;
 			setInfoText("21 points, auto-stand");
 			$.getJSON(restAdress, standParams, viewStandResponse);
@@ -226,7 +231,7 @@ function processGameOver(data) {
 	$(".sbutton").toggle('slow');
 	$("#panel").toggle('slow');
 	$(".refillButton").toggle('slow');
-	setInfoText("game over");
+	setInfoText("Game over. Try again!");
 	$(".sbutton").html("Play again");
 	buttonBlock = false;
 	bj=false;

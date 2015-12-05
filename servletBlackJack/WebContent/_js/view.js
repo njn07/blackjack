@@ -92,21 +92,18 @@ var status = data["gameStatus"];
 			break;
 		case "DEALER_BUSTED":
 			if(bj){
-				//addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('../img/3x2.jpg');");
+				
 				swal("You've won 3:2 money "+data['winSum']+" , lucky!", "You win");
 			}
 			else
 			swal("You've won "+data['winSum']+" ,lucky!", "Dealer's busted");
-			addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('../img/alert.jpg');");
 			break;
 		case "PLAYER_WINS":
 			if(bj){
-				//addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('../img/3x2.jpg');");
 				swal("You've won 3:2 money"+data['winSum']+" , lucky!", "You win");
 			}
 			else
 				swal("You've won "+data['winSum']+" ,lucky!", "You win");
-			addCSSRule(document.styleSheets[2], ".sweet-alert" , "background-image: url('../img/alert.jpg');");
 			break;
 		case "DEALER_WINS":
 			swal("Dealer wins, looser!", "It's a sad sad situation!");
