@@ -1,6 +1,11 @@
 $(function() {
+	$(".refillButton" ).prop( "disabled", true );
+	
 	setNickName();
 	$.getJSON(restAdress, balanceParams, balance);
+	if (balanceAmount < 1) {
+		$(".refillButton" ).prop( "disabled", false );
+		}
 	$(".refillButton").click(function() {
 		$.getJSON(restAdress, refillParams, refill);
 	});
@@ -8,9 +13,10 @@ $(function() {
 			.click(
 					function() {
 						if (balanceAmount < 1) {
+							$(".refillButton" ).prop( "disabled", false );
 							swal({
 								title:"We're sorry, but you're out of money. ",
-								text:"If you want to continue playing Black Jack, you can refill your balance by pushing ''Refill'' button. It's  vailable only for registered users!"
+								text:"If you want to contin	ue playing Black Jack, you can refill your balance by pushing ''Refill'' button. It's  vailable only for registered users!"
 							});
 							return;
 						}
@@ -81,6 +87,7 @@ function balance(data) {
 	balanceAmount = data['balance'];
 }
 function refill(data) {
+	$(".refillButton" ).prop( "disabled", true );
 	swal(REFILLMESSAGE);
 	$.getJSON(restAdress, balanceParams, balance);
 }
@@ -227,6 +234,9 @@ function processGameOver(data) {
 	showGameResult(data);
 	var maxValue = data['balance'];
 	balanceAmount = data['balance'];
+	if (balanceAmount < 1) {
+		$(".refillButton" ).prop( "disabled", false );
+		}
 	document.getElementById('balance').innerHTML = "Balance: <br />" + maxValue;
 	$(".sbutton").toggle('slow');
 	$("#panel").toggle('slow');
