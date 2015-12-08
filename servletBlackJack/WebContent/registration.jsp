@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<head>
+</head>
 <t:casualpage>
 <jsp:attribute name="header">Registration</jsp:attribute>
 	<jsp:body>
+	<link rel="stylesheet" href="_css/register.css">
 	<div class="register">
 		${errorMessage}
 		<form action="register" method="post">

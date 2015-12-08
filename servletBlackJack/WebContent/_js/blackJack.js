@@ -69,13 +69,9 @@ function duplicateGameError() {
 	swal({
 		title: "Oops!", 
 			text: DUPLICATEGAMETEXT,
-			timer: 5000,
 			showConfirmButton: false
 		});
 	cardQuantity=parseInt("0"); 
-	setTimeout(function() {
-		window.location.replace("complain");
-	}, 5000);
 	}
 function balance(data) {
 	if (data['error'] != undefined) {
@@ -101,7 +97,7 @@ function redirectToProfile() {
 	window.location.replace("user");
 }
 window.onbeforeunload = function() { 
-	if (cardQuantity > 0) { 
+	if (gameState!="Finished") { 
 	$.getJSON(restAdress, endGameParams, function(data) { 
 	}); 
 	} 
@@ -145,6 +141,7 @@ function setNickName() {
 	balanceParams.userId = userNickName;
 	refillParams.userId = userNickName;
 }
+var gameState="Finished";
 var bj = false;
 var userNickName = "";
 var balanceAmount = parseInt("0");
@@ -154,6 +151,7 @@ var dealerCardQuantity = parseInt("0");
 var buttonBlock = false;
 var hitBut = document.getElementById('hit');
 function gameStart(data) {
+	gameState="Started";
 	var maxValue = data['balance'];
 	document.getElementById('balance').innerHTML = "Balance: <br />" + maxValue;
 	setSlider(maxValue);
@@ -245,4 +243,5 @@ function processGameOver(data) {
 	$(".sbutton").html("Play again");
 	buttonBlock = false;
 	bj=false;
+	gameState="Finished";
 }
