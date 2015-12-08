@@ -101,7 +101,7 @@
 					<label>Welcome, ${sessionScope.user.getLogin()}!<br /> Good
 						luck and have fun!<br /></label><br />
 					<button class="logButton" onClick="redirectToProfile()">My
-						Profile</button><br />
+						Profile</button>
 					<button class="logButton" onClick="logout()">Log out</button>
 					<br />
 				</c:when>
@@ -126,7 +126,7 @@
 			
 			<button class="sbutton" id="startButton">START</button>
 			</div>
-			<div style="position: relative;display:inline-block;" >
+			<div style="position: relative;display:inline-block;margin-top:65px" >
 				<div id="playerSum" style="position:absolute;margin-left:-150px;"></div>
 				<!--тут будут очки игрока-->
 

@@ -33,7 +33,7 @@ $(function() {
 		betParams.action = "PLACEBET" + bid;
 		document.getElementById('dealerSum').innerHTML = "Dealer is waiting";
 		$.getJSON(restAdress, betParams, processBet);
-		setBid("Bid: <br />" + bid);
+		setBid("Bid:<br />" + bid);
 
 		$("#betbar").toggle('slow');
 		$("#panel").toggle('slow');

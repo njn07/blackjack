@@ -29,19 +29,49 @@ function setSlider(maxValue){
           }
       });
       $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
-      $("#amount").keypress(function(event) {
-    	  var data = $("#amount").val();
+      $("#amount").keydown(function(event) {
     	  var regex = new RegExp(/[0-9]+/);
     	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    	    console.log(key);
     	    if (!regex.test(key)) {
+    	    	if (key.charCodeAt(0) == 8 || key.charCodeAt(0) == 9 ||key.charCodeAt(0) == 46 || (key.charCodeAt(0)> 36 && key.charCodeAt(0) < 41)) {
+    	    			return true;
+    	    			}
     	       event.preventDefault();
     		        	       return false;
     	    }
-    	    
-
-    	  
     	  });
+      $("#amount").keyup(function(event) {
+    	  
+    	  var data = $("#amount").val();
+    	  if(data==""){
+    		  $("#amount").val(1);
+    		  console.log("lol");
+    	  }
+	    if (data.length > 0)
+	    {
+	       if (parseInt(data) >= 0 && parseInt(data) <= maxValue)
+	       {
+	           $("#slider").slider("option", "value", data);}
+	       
+	       else
+	       {
+	   if (parseInt(data) < 1)
+	          {
+	     $("#amount").val("1");
+	            $("#slider").slider("option", "value", "1");
+	          }
+	          if (parseInt(data) > maxValue)
+	          {
+	            $("#amount").val(maxValue);
+	            $("#slider").slider("option", "value", maxValue);
+	          }
+	       }
+	    }
+	    else
+	    {
+	      $("#slider").slider("option", "value", "0");
+	    } 
+      });
       $("#amount").change(function(event) {
     	  var data = $("#amount").val();
 	    if (data.length > 0)
@@ -79,14 +109,14 @@ var status = data["gameStatus"];
 		case "DEALER_BUSTED":
 			if(bj){
 				
-				swal("You've won 3:2 money "+data['winSum']+" , lucky!", "You win");
+				swal("Black Jack! yeah! ", "You're paid 3:2 to your bid - "+data['winSum']);
 			}
 			else
 			swal("You've won "+data['winSum']+" ,lucky!", "Dealer's busted");
 			break;
 		case "PLAYER_WINS":
 			if(bj){
-				swal("You've won 3:2 money"+data['winSum']+" , lucky!", "You win");
+				swal("Black Jack! yeah!","You're paid 3:2 to your bid - "+data['winSum']);
 			}
 			else
 				swal("You've won "+data['winSum']+" ,lucky!", "You win");
