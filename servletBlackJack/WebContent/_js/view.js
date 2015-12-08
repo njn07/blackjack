@@ -29,33 +29,19 @@ function setSlider(maxValue){
           }
       });
       $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
-      $("#amount").keyup(function(event) {
+      $("#amount").keypress(function(event) {
     	  var data = $("#amount").val();
-	    if (data.length > 0)
-	    {
-	       if (parseInt(data) >= 0 && parseInt(data) <= maxValue)
-	       {
-	           $("#slider").slider("option", "value", data);}
-	       
-	       else
-	       {
-	   if (parseInt(data) < 1)
-	          {
-	     $("#amount").val("1");
-	            $("#slider").slider("option", "value", "1");
-	          }
-	          if (parseInt(data) > maxValue)
-	          {
-	            $("#amount").val(maxValue);
-	            $("#slider").slider("option", "value", maxValue);
-	          }
-	       }
-	    }
-	    else
-	    {
-	      $("#slider").slider("option", "value", "0");
-	    } 
-      });
+    	  var regex = new RegExp(/[0-9]+/);
+    	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    	    console.log(key);
+    	    if (!regex.test(key)) {
+    	       event.preventDefault();
+    		        	       return false;
+    	    }
+    	    
+
+    	  
+    	  });
       $("#amount").change(function(event) {
     	  var data = $("#amount").val();
 	    if (data.length > 0)

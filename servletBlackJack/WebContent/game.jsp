@@ -202,6 +202,7 @@
 			<p>
 				<label for="amount">Your bid:</label> <input type="number"
 					id="amount"
+					pattern="\d+"
 					style="border: 0; color: #f6931f; font-weight: bold; text-align: center"
 					maxlength="12">
 			</p>
