@@ -137,6 +137,11 @@ button:focus {
     outline: none;
 }
 
+#deck {
+	height:157px;
+	margin-top:1px;
+}
+
 .sendbutton {
   font-size: 16px;
 -webkit-border-radius: 4px;
