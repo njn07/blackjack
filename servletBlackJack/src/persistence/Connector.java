@@ -10,6 +10,7 @@ public class Connector {
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String HOST = "jdbc:mysql://127.6.40.2:3306/black";
 
+
 	private static Connection connection;
 	
 	

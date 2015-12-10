@@ -49,7 +49,8 @@ public class BlackJackGame extends AbstractBJGame {
 		int lost = player.getUser().getGames_lost();
 		int draws = player.getUser().getGames_draws();
 		int balance = player.getChipCount();
-		logger.debug("BEFORE UPDATING STATS"+"win"+win+"lost"+lost+"draws"+draws);
+		logger.debug("BEFORE UPDATING STATS" + "win" + win + "lost" + lost
+				+ "draws" + draws);
 		if (gameResult == "PLAYER_WINS" || gameResult == "DEALER_BUSTED") {
 			win++;
 		} else if (gameResult == "DEALER_WINS" || gameResult == "PLAYER_BUSTED") {
@@ -57,13 +58,23 @@ public class BlackJackGame extends AbstractBJGame {
 		} else if (gameResult == "TIE") {
 			draws++;
 		}
-		logger.debug("After UPDATING STATS"+"win"+win+"lost"+lost+"draws"+draws);
+		logger.debug("After UPDATING STATS" + "win" + win + "lost" + lost
+				+ "draws" + draws);
 		try {
 			manager.updateUserStats(userId, win, lost, draws, balance);
+			updateInternUser(player.getUser(), win, lost, draws, balance);
 		} catch (PersistenceException e) {
 			logger.error(e.getMessage());
 		}
 		Restart();
+	}
+
+	private void updateInternUser(User user, int win, int lost, int draws, int balance) {
+		user.setGames_won(win);
+		user.setGames_lost(lost);
+		user.setGames_draws(draws);
+		user.setBalance(balance);
+
 	}
 
 	@Override
