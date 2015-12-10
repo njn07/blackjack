@@ -32,6 +32,6 @@ var refillParams = {
 	userId : "casualPlayer"
 };
 const REFILLMESSAGE="You have just refilled your wallet with 1000 coins";
-const DUPLICATEGAMETEXT="You are trying to play more than 1 game at once! If you have a wish, you may contact us(you will be redirected in a few seconds)";
+const DUPLICATEGAMETEXT="You are trying to play more than 1 game at once! Please, close this window and continue playing";
 //var restAdress="http://black-jakk.rhcloud.com/rest";
 var restAdress="http://localhost:8080/servletBlackJack/rest";

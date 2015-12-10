@@ -45,20 +45,20 @@
 							Game</a>
 					</div>
 					<c:choose>
-					<c:when test="${not empty sessionScope.user }">
-						<div class="btn-group">
-							<a href="user" class="btn btn-success" role="button">My
-								Profile</a>
-						</div>
-					</c:when>
-					<c:otherwise>
-					<a href="register" class="btn btn-success" role="button">Register</a>
-					</c:otherwise>
+						<c:when test="${not empty sessionScope.user }">
+							<div class="btn-group">
+								<a href="user" class="btn btn-success" role="button">My
+									Profile</a>
+							</div>
+							<div class="btn-group">
+								<a href="complain" class="btn btn-success" role="button">Contact
+									us</a>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<a href="register" class="btn btn-success" role="button">Register</a>
+						</c:otherwise>
 					</c:choose>
-					<div class="btn-group">
-						<a href="complain" class="btn btn-success" role="button">Contact
-							us</a>
-					</div>
 				</div>
 				</row> </row>
 				<row>
