@@ -3,6 +3,8 @@ package game;
 import java.util.Date;
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
+
 import users.DealerPlayer;
 import users.HumanPlayer;
 import deckpac.Deck;
@@ -14,6 +16,8 @@ public abstract class AbstractBJGame {
 	HumanPlayer player = new HumanPlayer();
 	GameState state = GameState.Finished;
 	Date lastLaunched;
+	final static Logger logger = Logger.getLogger(AbstractBJGame.class
+			.getSimpleName());
 
 	public Date getLastLaunched() {
 		return lastLaunched;
@@ -30,9 +34,8 @@ public abstract class AbstractBJGame {
 	}
 
 	public HashMap<String, String> respond(String userId, String command) {
-		System.out.print(this.getClass().getSimpleName() + ": ");
-		System.out.println("command " + command + " from " + userId
-				+ " game state: " + state);
+		logger.info("command " + command + " from " + userId + " game state: "
+				+ state);
 		updateLaunchedTime();
 		try {
 			HashMap<String, String> result = new HashMap<String, String>();
@@ -46,17 +49,16 @@ public abstract class AbstractBJGame {
 				return processBet(result, command);
 			}
 			if (command.equals("GETBALANCE")) {
-				System.out.println("getting balance");
+				logger.debug("getting balance");
 				if (state != GameState.Finished) {
 					return Errors.badParams();
 				}
-				System.out.println(state != GameState.Finished);
 				processGetBalance(userId, result);
 				return result;
 			}
 			if (command.equals("REFILL")) {
 				if (state == GameState.Finished) {
-					System.out.println(userId + " is refilled with 1000!");
+					logger.info(userId + " is refilled with 1000!");
 					refill(result, userId);
 					return result;
 				} else {
@@ -70,12 +72,12 @@ public abstract class AbstractBJGame {
 			}
 			switch (command) {
 			case "GAMESTART":
-				System.out.println("game start+restart for " + userId);
+				logger.debug("game start+restart for " + userId);
 				processRestart(result);
 				state = GameState.Betting;
 				return result;
 			case "HIT":
-				System.out.println("hitting, gamestate is " + state);
+				logger.debug("hitting, gamestate is " + state);
 				if (state != GameState.OnGoing) {
 					throw new BlackJackGameException("wrong state");
 				}
@@ -91,15 +93,15 @@ public abstract class AbstractBJGame {
 				return Errors.getNocommand();
 			}
 			if (gameOver(result, userId)) {
-				System.out.println("game is over");
+				logger.debug("game is over");
 				state = GameState.Finished;
 				processGameOver(userId, result);
 			}
 			return result;
 		} catch (Exception ex) {
-			System.out.println("Exception occured!" + ex.getMessage());
+			logger.error("Exception occured!" + ex.getMessage());
 			for (StackTraceElement call : ex.getStackTrace()) {
-				System.out.println(call);
+				logger.error(call);
 			}
 			Restart();
 			return Errors.getRestart();
@@ -108,10 +110,9 @@ public abstract class AbstractBJGame {
 
 	protected void hardRestart(HashMap<String, String> result) {
 		Restart();
-		//player = new HumanPlayer();
 		result.put("DEBUG", " Game has been restarted! Balance is default");
 		state = GameState.Finished;
-		System.out.println("restarted!");
+		logger.debug("game is restarted!");
 	}
 
 	protected void processGameOver(String userId, HashMap<String, String> result) {
@@ -122,11 +123,11 @@ public abstract class AbstractBJGame {
 
 	protected void processStand(HashMap<String, String> result) {
 		state = GameState.Stand;
-		System.out.println("player is standing");
+		logger.debug("player is standing");
 		dealer.play(deck);
 		result.put("dealerCards", dealer.displayCards());
 		result.put("dealerSum", Integer.toString(dealer.sumPoints()));
-		System.out.println("dealers score is " + dealer.sumPoints());
+		logger.debug("dealers score is " + dealer.sumPoints());
 		result.put("gameStatus", GameResults.gameResult(dealer, player));
 	}
 
@@ -141,7 +142,6 @@ public abstract class AbstractBJGame {
 	protected void processRestart(HashMap<String, String> result) {
 		Restart();
 		result.put("balance", Integer.toString(player.getChipCount()));
-
 	}
 
 	protected void processGetBalance(String userId,
@@ -163,8 +163,7 @@ public abstract class AbstractBJGame {
 			int chipcount = player.getChipCount();
 			player.setChipCount(chipcount - bet);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println(bet + ' ' + betString);
+			logger.error(e.getMessage() + bet + ' ' + betString);
 			result.put("error", "bad bet");
 			result.put("gameStatus", "OK");
 			return result;
@@ -184,36 +183,45 @@ public abstract class AbstractBJGame {
 
 	protected boolean gameOver(HashMap<String, String> result, String userId) {
 		String resString = result.get("gameStatus");
-		System.out.println("[GAME OVER: player " + userId + " result "
-				+ resString + "]");
+		logger.info("[GAME OVER: player " + userId + " result " + resString
+				+ "]");
 		if (resString.equals("PLAYER_BUSTED")
 				|| resString.equals("DEALER_WINS")) {
 			return true;
 		}
 		if (resString.equals("DEALER_BUSTED")
 				|| resString.equals("PLAYER_WINS")) {
-			setWinChips(player, userId);
 			if (player.sumPoints() == 21) {
+				setBlackJackWin(player);
 				result.put("winSum", Integer.toString(player.getPot() * 3 / 2));
 			} else {
+				setWinChips(player);
 				result.put("winSum", Integer.toString(player.getPot() * 2));
 			}
 			return true;
 		}
 		if (resString.equals("TIE")) {
-			setTieChips(player, userId);
+			setTieChips(player);
 			return true;
 		}
 		return false;
 	}
 
-	protected void setTieChips(HumanPlayer p, String username) {
+	protected void setBlackJackWin(HumanPlayer p) {
+		int newChipCount = player.getChipCount() + player.getPot()
+				+ (player.getPot() * 3 / 2);
+		logger.debug("winner getting" + newChipCount);
+		p.setChipCount(newChipCount);
+
+	}
+
+	protected void setTieChips(HumanPlayer p) {
 		int newChipCount = p.getChipCount() + p.getPot();
 		p.setChipCount(newChipCount);
 
 	}
 
-	protected void setWinChips(HumanPlayer p, String username) {
+	protected void setWinChips(HumanPlayer p) {
 		int newChipCount = p.getChipCount() + p.getPot() * 2;
 		p.setChipCount(newChipCount);
 	}

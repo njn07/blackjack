@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import utils.Utils;
 
 @WebServlet("/complain")
 public class ComplaintServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3597424740864725582L;
+	final static Logger logger = Logger.getLogger(ComplaintServlet.class
+			.getSimpleName());
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -27,7 +27,8 @@ public class ComplaintServlet extends HttpServlet {
 
 	private void redirectSuccess(HttpServletRequest req,
 			HttpServletResponse resp) throws IOException, ServletException {
-		req.getRequestDispatcher("/WEB-INF/view/complaintsuccess.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/view/complaintsuccess.jsp").forward(
+				req, resp);
 	}
 
 	@Override
@@ -35,7 +36,7 @@ public class ComplaintServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String complaintText = req.getParameter("message");
 		if (!Utils.isNullOrEmpty(complaintText)) {
-			System.out.println("new complaint: " + complaintText);
+			logger.info("new complaint: " + complaintText);
 			redirectSuccess(req, resp);
 			return;
 		} else {

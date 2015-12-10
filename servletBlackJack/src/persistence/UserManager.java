@@ -1,14 +1,8 @@
 package persistence;
 
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.Collection;
 import java.util.HashMap;
-
-import com.mysql.jdbc.exceptions.jdbc4.MySQLDataException;
 
 import javax.naming.OperationNotSupportedException;
 
@@ -72,8 +66,8 @@ public class UserManager {
 	public void updateUserStats(String username, int winIncr, int lostIncr,
 			int draws, int balance) throws PersistenceException {
 		User user = users.get(username);
-		user.setGames_won(user.getGames_won() + winIncr);
-		user.setGames_lost(user.getGames_lost() + lostIncr);
+		user.setGames_won(winIncr);
+		user.setGames_lost(lostIncr);
 		user.setGames_draws(draws);
 		if (winIncr == 0) {
 			user.setGames_played(user.getGames_played() + 1);

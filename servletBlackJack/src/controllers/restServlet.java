@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
@@ -26,6 +27,8 @@ public class restServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserManager manager = UserManager.getManager();
 	GamesRouter router = GamesRouter.getInstance();
+	final static Logger logger = Logger.getLogger(restServlet.class
+			.getSimpleName());
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -33,17 +36,14 @@ public class restServlet extends HttpServlet {
 		if (Utils.isNullOrEmpty(action)) {
 			respond(response, Errors.badParams());
 		}
-		System.out.println("=== request with action" + action + " ===");
 		if (!isRegistered(request)) {
-			System.out.println("user is not registered");
-			String userId=request.getSession().getId();
+			String userId = request.getSession().getId();
 			HashMap<String, String> responseResult = router
 					.handleUnregisteredUserRequest(userId, action);
 			respond(response, responseResult);
 		} else {
-			System.out.println("user is registered");
-			User user=(User)request.getSession().getAttribute("user");
-			String login=user.getLogin();
+			User user = (User) request.getSession().getAttribute("user");
+			String login = user.getLogin();
 			HashMap<String, String> responseResult = router.handleUserRequest(
 					login, action);
 			respond(response, responseResult);

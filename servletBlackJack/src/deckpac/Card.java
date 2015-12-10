@@ -73,6 +73,8 @@ public class Card {
 			cardPoints = 10;
 			visualisation = "K";
 			break;
+		default:
+			break;
 		}
 		switch (suit) {
 		case CLUB:
@@ -87,7 +89,8 @@ public class Card {
 		case HEART:
 			visualisation += "h";
 			break;
-
+		default:
+			break;
 		}
 
 	}

@@ -18,14 +18,16 @@ import users.User;
 
 @WebServlet("/testold")
 public class testServlet extends HttpServlet {
+	private static final boolean b = false;
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/bs.jsp").forward(request, response);
-		//if (request.getSession().getAttribute("user") != null) {
-			//doTest(response.getWriter());
-		//}
+		request.getRequestDispatcher("WEB-INF/bs.jsp").forward(request,
+				response);
+		if (b) {
+			doTest(response.getWriter());
+		}
 	}
 
 	private void doTest(PrintWriter pw) {
@@ -46,26 +48,24 @@ public class testServlet extends HttpServlet {
 		} catch (ClassNotFoundException | NoSuchAlgorithmException
 				| SQLException e) {
 			pw.print("catched SQLException");
-			e.printStackTrace();}
-			catch(Exception e){
-				pw.print("unknown ex "+e.getClass().getName());
-			}
-		
-		List<User> users_got=null;
+			e.printStackTrace();
+		} catch (Exception e) {
+			pw.print("unknown ex " + e.getClass().getName());
+		}
+
+		List<User> users_got = null;
 		try {
 			users_got = UserUtil.getAllUsers();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		for (User user : users_got) {
-			pw.print(user+"<br/>");
+			pw.print(user + "<br/>");
 		}
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }

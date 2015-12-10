@@ -7,7 +7,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>game.jsp</welcome-file>
   </welcome-file-list>
-    <filter>
+  <filter>
     <filter-name>XSSFilter</filter-name>
     <filter-class>
         auth.XSSFilter
@@ -21,12 +21,12 @@
     <url-pattern>/user</url-pattern>
     <url-pattern>/complain</url-pattern>
   </filter-mapping>
-   <error-page>
+  <error-page>
     <error-code>500</error-code>
     <location>/WEB-INF/servererror.jsp</location>
   </error-page>
   <error-page>
-  <error-code>404</error-code>
+    <error-code>404</error-code>
     <location>/WEB-INF/notfound.jsp</location>
   </error-page>
 </web-app>
