@@ -30,8 +30,8 @@
 
 
 	<div class="row" id="first">
-	<div class="col-xs-4" class="deck">
-		<img src="img/cards/background.png" class="card"  />
+	<div class="col-xs-4">
+		<img id="deck"	 src="img/cards/background.png"    />
 	</div>
 
 

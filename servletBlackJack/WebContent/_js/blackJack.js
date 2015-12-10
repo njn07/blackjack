@@ -20,8 +20,7 @@ $(function() {
 							});
 							return;
 						}
-						bj = false;
-
+						bj = false; 
 						refreshView();
 						$.getJSON(restAdress, gameStartParams, gameStart);
 						$("#betbar").toggle('slow');
@@ -141,6 +140,7 @@ function setNickName() {
 	balanceParams.userId = userNickName;
 	refillParams.userId = userNickName;
 }
+var countWins=0;
 var gameState="Finished";
 var bj = false;
 var userNickName = "";

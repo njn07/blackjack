@@ -104,27 +104,56 @@ function showGameResult(data){
 var status = data["gameStatus"];
 	switch(status){
 		case "PLAYER_BUSTED":
+			countWins=0;
 			swal("Dealer wins, looser!", "You've busted");
 			break;
 		case "DEALER_BUSTED":
 			if(bj){
-				
 				swal("Black Jack! yeah! ", "You're paid 3:2 to your bid - "+data['winSum']);
 			}
-			else
-			swal("You've won "+data['winSum']+" ,lucky!", "Dealer's busted");
+			else{
+			if(countWins==0){
+				swal("You've won "+data['winSum']+" ,lucky!", "Dealer's busted");
+			}
+			if(countWins==1){
+				swal("Wow! Second in a row! Your win is - "+data['winSum'],"Wanna try again, huh?");
+			}
+			if(countWins==2){
+				swal("Come on! It's impossible! ","We bet you're cheating! Now you stole "+data['winSum'] +" from us!");
+			}
+			if(countWins>2){
+				swal("COME FREAKING ON! NO WAY!",data['winSum']);
+			}
+			countWins++;
+			}
 			break;
 		case "PLAYER_WINS":
 			if(bj){
 				swal("Black Jack! yeah!","You're paid 3:2 to your bid - "+data['winSum']);
 			}
 			else
-				swal("You've won "+data['winSum']+" ,lucky!", "You win");
+				{
+				if(countWins==0){
+					swal("You've won "+data['winSum']+", lucky!", "You win");
+				}
+				if(countWins==1){
+					swal("Wow! Second in a row! Your win is - "+data['winSum'],"Wanna try again, huh?");
+				}
+				if(countWins==2){
+					swal("Come on! It's impossible! ","We bet you're cheating! Now you stole "+data['winSum'] +" from us!");
+				}
+				if(countWins>2){
+					swal("COME FREAKING ON! NO WAY!",data['winSum']);
+				}
+				countWins++;
+				}
 			break;
 		case "DEALER_WINS":
+			countWins=0;
 			swal("Dealer wins, looser!", "It's a sad sad situation!");
 			break;
 		case "TIE":
+			countWins=0;
 			swal("TIE", "Yuppppy!");
 			break;
 		default:
@@ -135,7 +164,12 @@ var status = data["gameStatus"];
 
 function setCardImage(cardOwner, cardName, index) {
 	if(cardName!=undefined){
-		
+	if(cardName=="background"){
+		$("#" + cardOwner + index).css({ "height":"157px","margin-top":"1px"});
+	}
+	else{
+		$("#" + cardOwner + index).css({ "height":"160px","margin-top":"0"});
+	}
 
 	$("#" + cardOwner + index).show("slow");
 	document.getElementById(cardOwner + index).src = "img/cards/" + cardName + ".png";
