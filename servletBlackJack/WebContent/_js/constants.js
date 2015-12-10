@@ -1,4 +1,3 @@
-
 var hitParams = {
 	action : "HIT",
 	userId : "casualPlayer"
@@ -16,9 +15,9 @@ var gameStartParams = {
 	userId : "casualPlayer"
 };
 var endGameParams = {
-		action : "RESTART",
-		userId : "casualPlayer"
-	};
+	action : "RESTART",
+	userId : "casualPlayer"
+};
 var betParams = {
 	action : "PLACEBET",
 	userId : "casualPlayer"
@@ -31,7 +30,7 @@ var refillParams = {
 	action : "REFILL",
 	userId : "casualPlayer"
 };
-const REFILLMESSAGE="You have just refilled your wallet with 1000 coins";
-const DUPLICATEGAMETEXT="You are trying to play more than 1 game at once! Please, close this window and continue playing";
-//var restAdress="http://black-jakk.rhcloud.com/rest";
-var restAdress="http://localhost:8080/servletBlackJack/rest";
+var REFILLMESSAGE = "You have just refilled your wallet with 1000 coins";
+var DUPLICATEGAMETEXT = "You are trying to play more than 1 game at once! Please, close this window and continue playing";
+// var restAdress="http://black-jakk.rhcloud.com/rest";
+var restAdress = "http://localhost:8080/servletBlackJack/rest";

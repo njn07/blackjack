@@ -1,16 +1,16 @@
 function refreshView(){
 for (i = 0; i < cardQuantity; i++) {
-		$("#playerCard" + i.toString()).hide('slow');
+		jQuery("#playerCard" + i.toString()).hide('slow');
 	}
 	for (i = 0; i < dealerCardQuantity; i++) {
-		$("#dealerCard" + i.toString()).hide('slow');
+		jQuery("#dealerCard" + i.toString()).hide('slow');
 	}
 cardQuantity = parseInt("0");
 	dealerCardQuantity = parseInt("0");
 	setPlayerScore(-1);
 	setDealerScore(-1);
 	pot=parseInt("0");
-	$(".sbutton").toggle('slow');
+	jQuery(".sbutton").toggle('slow');
 	setBid("Bid: <br />&nbsp");
 	setInfoText("");
 	bj=false;
@@ -19,17 +19,17 @@ function setBid(income){
 document.getElementById('bid').innerHTML = income;
 }
 function setSlider(maxValue){
-      $( "#slider" ).slider({
+      jQuery( "#slider" ).slider({
           range: "min",
           value: 1,
           min: 1,
           max: maxValue,
           slide: function( event, ui ) {
-              $( "#amount" ).val(ui.value );
+              jQuery( "#amount" ).val(ui.value );
           }
       });
-      $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
-      $("#amount").keydown(function(event) {
+      jQuery( "#amount" ).val( jQuery( "#slider" ).slider( "value" ) );
+      jQuery("#amount").keydown(function(event) {
     	  var regex = new RegExp(/[0-9]+/);
     	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     	    if (!regex.test(key)) {
@@ -40,63 +40,62 @@ function setSlider(maxValue){
     		        	       return false;
     	    }
     	  });
-      $("#amount").keyup(function(event) {
+      jQuery("#amount").keyup(function(event) {
     	  
-    	  var data = $("#amount").val();
+    	  var data = jQuery("#amount").val();
     	  if(data==""){
-    		  $("#amount").val(1);
-    		  console.log("lol");
+    		  jQuery("#amount").val(1);
     	  }
 	    if (data.length > 0)
 	    {
-	       if (parseInt(data) >= 0 && parseInt(data) <= maxValue)
+	       if (parseInt(data) >= 0 && parseInt(data) <=  jQuery( "#slider" ).slider("option","max"))
 	       {
-	           $("#slider").slider("option", "value", data);}
+	           jQuery("#slider").slider("option", "value", data);}
 	       
 	       else
 	       {
 	   if (parseInt(data) < 1)
 	          {
-	     $("#amount").val("1");
-	            $("#slider").slider("option", "value", "1");
+	     jQuery("#amount").val("1");
+	            jQuery("#slider").slider("option", "value", "1");
 	          }
-	          if (parseInt(data) > maxValue)
+	          if (parseInt(data) > jQuery( "#slider" ).slider("option","max"))
 	          {
-	            $("#amount").val(maxValue);
-	            $("#slider").slider("option", "value", maxValue);
+	            jQuery("#amount").val(jQuery( "#slider" ).slider("option","max"));
+	            jQuery("#slider").slider("option", "value", jQuery( "#slider" ).slider("option","max"));
 	          }
 	       }
 	    }
 	    else
 	    {
-	      $("#slider").slider("option", "value", "0");
+	      jQuery("#slider").slider("option", "value", "0");
 	    } 
       });
-      $("#amount").change(function(event) {
-    	  var data = $("#amount").val();
+      jQuery("#amount").change(function(event) {
+    	  var data = jQuery("#amount").val();
 	    if (data.length > 0)
 	    {
-	       if (parseInt(data) >= 0 && parseInt(data) <= maxValue)
+	       if (parseInt(data) >= 0 && parseInt(data) <= jQuery( "#slider" ).slider("option","max"))
 	       {
-	           $("#slider").slider("option", "value", data);}
+	           jQuery("#slider").slider("option", "value", data);}
 	       
 	       else
 	       {
 	   if (parseInt(data) < 1)
 	          {
-	     $("#amount").val("1");
-	            $("#slider").slider("option", "value", "1");
+	     jQuery("#amount").val("1");
+	            jQuery("#slider").slider("option", "value", "1");
 	          }
-	          if (parseInt(data) > maxValue)
+	          if (parseInt(data) > jQuery( "#slider" ).slider("option","max"))
 	          {
-	            $("#amount").val(maxValue);
-	            $("#slider").slider("option", "value", maxValue);
+	            jQuery("#amount").val(jQuery( "#slider" ).slider("option","max"));
+	            jQuery("#slider").slider("option", "value", jQuery( "#slider" ).slider("option","max"));
 	          }
 	       }
 	    }
 	    else
 	    {
-	      $("#slider").slider("option", "value", "0");
+	      jQuery("#slider").slider("option", "value", "0");
 	    } 
       });
 }
@@ -143,7 +142,7 @@ var status = data["gameStatus"];
 					swal("Come on! It's impossible! ","We bet you're cheating! Now you stole "+data['winSum'] +" from us!");
 				}
 				if(countWins>2){
-					swal("COME FREAKING ON! NO WAY!",data['winSum']);
+					swal("COME FREAKING ON! NO WAY!","You won "+data['winSum']);
 				}
 				countWins++;
 				}
@@ -165,13 +164,13 @@ var status = data["gameStatus"];
 function setCardImage(cardOwner, cardName, index) {
 	if(cardName!=undefined){
 	if(cardName=="background"){
-		$("#" + cardOwner + index).css({ "height":"157px","margin-top":"1px"});
+		jQuery("#" + cardOwner + index).css({ "height":"157px","margin-top":"1px"});
 	}
 	else{
-		$("#" + cardOwner + index).css({ "height":"160px","margin-top":"0"});
+		jQuery("#" + cardOwner + index).css({ "height":"160px","margin-top":"0"});
 	}
 
-	$("#" + cardOwner + index).show("slow");
+	jQuery("#" + cardOwner + index).show("slow");
 	document.getElementById(cardOwner + index).src = "img/cards/" + cardName + ".png";
 	}
 	else fatalError();

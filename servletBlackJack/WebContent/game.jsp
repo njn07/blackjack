@@ -21,7 +21,6 @@
 <link rel="stylesheet" href="_js/lib/jquery-ui-1.11.4/jquery-ui.css" />
 <script src="_js/lib/jquery-ui-1.11.4/jquery-ui.js"></script>
 
-<script src="_js/slider.js"></script>
 <meta name="viewport" content="target-densitydpi=device-dpi" />
 
 </head>
@@ -40,8 +39,7 @@
 	<div class="col-xs-4">
 
 		<div>
-			
-			<!--полученные карты диллера-->
+		
 			<div style="position: relative;display:inline-block;">
 			<div id="dealerSum" style="position:absolute;margin-left:-150px;"></div>
 				<img src="img/cards/background.png" id="dealerCard0" class="card"
@@ -54,7 +52,7 @@
 					style="position: absolute; margin-left: 50px;" hidden="hidden" />
 				<!--2-->
 				<img src="img/cards/background.png" id="dealerCard3" class="card"
-					style="position: absolute; margin-left: 75px;" hidden="hidden" />
+					style="position: absolute; margin-left: 75px;" hidden="hidden" /> 
 				<!--3-->
 				<img src="img/cards/background.png" id="dealerCard4" class="card"
 					style="position: absolute; margin-left: 100px;" hidden="hidden" />
@@ -91,7 +89,6 @@
 				<!--14-->
 
 			</div>
-			<!--тут будут очки диллера-->
 
 		</div>
 		</div>
@@ -128,7 +125,6 @@
 			</div>
 			<div style="position: relative;display:inline-block;margin-top:65px" >
 				<div id="playerSum" style="position:absolute;margin-left:-150px;"></div>
-				<!--тут будут очки игрока-->
 
 
 				
@@ -183,7 +179,6 @@
 			<p id="bid" class="bigtext">
 				Bid: <br />&nbsp;
 			</p>
-			<!--ставка-->
 
 		</div>
 		</div>
@@ -202,7 +197,6 @@
 			<p>
 				<label for="amount">Your bid:</label> <input type="number"
 					id="amount"
-					pattern="\d+"
 					style="border: 0; color: #f6931f; font-weight: bold; text-align: center"
 					maxlength="12">
 			</p>

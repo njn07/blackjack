@@ -1,6 +1,7 @@
 @font-face {
    	font-family: BebasNeue;
    	src: url("../font/ttf/BebasNeue_Regular.ttf") format('truetype');
+   	src: url("../font/woff/BebasNeue_Regular.woff") format('woff');
 	}
 body {
 	
@@ -133,6 +134,12 @@ border-radius: 4px;
    background-image:url("../img/button.png");
 	background-position:center;
    }
+   
+.refillButton:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+}
+   
 button:focus {
     outline: none;
 }

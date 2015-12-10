@@ -31,7 +31,6 @@ function warn(thing){
 }
 
 function note(thing){
-	console.log(["NOTE", thing].join(' '));
 }
 
 function fail(thing){

@@ -1,14 +1,13 @@
 var pass_hidden = false;
 
-function view_pass(){
-	var open; 
+function view_pass() {
+	var open;
 	var closed;
 	pass_hidden = !pass_hidden;
-	if(pass_hidden){
+	if (pass_hidden) {
 		open = "uneye";
 		closed = "eye";
-	}
-	else{
+	} else {
 		open = "eye";
 		closed = "uneye";
 	}

@@ -1,11 +1,10 @@
+jQuery.support.cors = true;
 $(function() {
-	$(".refillButton" ).prop( "disabled", true );
-	
+	$(".refillButton").prop("disabled", true);
+
 	setNickName();
 	$.getJSON(restAdress, balanceParams, balance);
-	if (balanceAmount < 1) {
-		$(".refillButton" ).prop( "disabled", false );
-		}
+
 	$(".refillButton").click(function() {
 		$.getJSON(restAdress, refillParams, refill);
 	});
@@ -13,14 +12,14 @@ $(function() {
 			.click(
 					function() {
 						if (balanceAmount < 1) {
-							$(".refillButton" ).prop( "disabled", false );
+							$(".refillButton").prop("disabled", false);
 							swal({
-								title:"We're sorry, but you're out of money. ",
-								text:"If you want to contin	ue playing Black Jack, you can refill your balance by pushing ''Refill'' button. It's  vailable only for registered users!"
+								title : "We're sorry, but you're out of money. ",
+								text : "If you want to contin	ue playing Black Jack, you can refill your balance by pushing ''Refill'' button. It's  vailable only for registered users!"
 							});
 							return;
 						}
-						bj = false; 
+						bj = false;
 						refreshView();
 						$.getJSON(restAdress, gameStartParams, gameStart);
 						$("#betbar").toggle('slow');
@@ -29,6 +28,7 @@ $(function() {
 						document.getElementById('amount').focus();
 					});
 	$("#sendBet").click(function() {
+		$("#sendBet").prop("disabled", true);
 		var bid = document.getElementById('amount').value;
 		var maxAmount = parseInt($("#slider").slider("option", "max"));
 		if (bid > maxAmount || bid <= 0) {
@@ -63,15 +63,15 @@ $(function() {
 	}, 500);
 });
 function duplicateGameError() {
-	buttonBlock=true;
+	buttonBlock = true;
 	$('.sbutton').blur();
 	swal({
-		title: "Oops!", 
-			text: DUPLICATEGAMETEXT,
-			showConfirmButton: false
-		});
-	cardQuantity=parseInt("0"); 
-	}
+		title : "Oops!",
+		text : DUPLICATEGAMETEXT,
+		showConfirmButton : false
+	});
+	cardQuantity = parseInt("0");
+}
 function balance(data) {
 	if (data['error'] != undefined) {
 		duplicateGameError();
@@ -80,9 +80,12 @@ function balance(data) {
 	document.getElementById("balance").innerHTML = "Balance: <br/>"
 			+ data['balance'];
 	balanceAmount = data['balance'];
+	if (data['balance'] < 1) {
+		$(".refillButton").prop("disabled", false);
+	}
 }
 function refill(data) {
-	$(".refillButton" ).prop( "disabled", true );
+	$(".refillButton").prop("disabled", true);
 	swal(REFILLMESSAGE);
 	$.getJSON(restAdress, balanceParams, balance);
 }
@@ -95,14 +98,14 @@ function redirectToRegister() {
 function redirectToProfile() {
 	window.location.replace("user");
 }
-window.onbeforeunload = function() { 
-	if (gameState!="Finished") { 
-	$.getJSON(restAdress, endGameParams, function(data) { 
-	}); 
-	} 
-	};
-function fatalError(){
-	
+window.onbeforeunload = function() {
+	if (gameState != "Finished") {
+		$.getJSON(restAdress, endGameParams, function(data) {
+		});
+	}
+};
+function fatalError() {
+
 }
 function logout() {
 	var url = 'login';
@@ -121,10 +124,9 @@ var redirect = function(url, method) {
 	form.submit();
 };
 function addCSSRule(sheet, selector, rules, index) {
-	if(sheet.insertRule) {
+	if (sheet.insertRule) {
 		sheet.insertRule(selector + "{" + rules + "}", index);
-	}
-	else {
+	} else {
 		sheet.addRule(selector, rules, index);
 	}
 }
@@ -140,8 +142,8 @@ function setNickName() {
 	balanceParams.userId = userNickName;
 	refillParams.userId = userNickName;
 }
-var countWins=0;
-var gameState="Finished";
+var countWins = 0;
+var gameState = "Finished";
 var bj = false;
 var userNickName = "";
 var balanceAmount = parseInt("0");
@@ -151,7 +153,7 @@ var dealerCardQuantity = parseInt("0");
 var buttonBlock = false;
 var hitBut = document.getElementById('hit');
 function gameStart(data) {
-	gameState="Started";
+	gameState = "Started";
 	var maxValue = data['balance'];
 	document.getElementById('balance').innerHTML = "Balance: <br />" + maxValue;
 	setSlider(maxValue);
@@ -230,11 +232,12 @@ function endGame(data) {
 }
 function processGameOver(data) {
 	showGameResult(data);
+	$("#sendBet").prop("disabled", false);
 	var maxValue = data['balance'];
 	balanceAmount = data['balance'];
 	if (balanceAmount < 1) {
-		$(".refillButton" ).prop( "disabled", false );
-		}
+		$(".refillButton").prop("disabled", false);
+	}
 	document.getElementById('balance').innerHTML = "Balance: <br />" + maxValue;
 	$(".sbutton").toggle('slow');
 	$("#panel").toggle('slow');
@@ -242,6 +245,6 @@ function processGameOver(data) {
 	setInfoText("Game over. Try again!");
 	$(".sbutton").html("Play again");
 	buttonBlock = false;
-	bj=false;
-	gameState="Finished";
+	bj = false;
+	gameState = "Finished";
 }
